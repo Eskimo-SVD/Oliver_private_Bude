@@ -3,5 +3,6 @@
 int main (int argc, char *argv)
 {
   printf ("Hallo Linux!\n");
-  return 0; 
+  printf ("Programmed in C\n");
+  return 0;
 }

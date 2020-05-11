@@ -8,7 +8,5 @@ int main(void) {
    printf("\n\tC\n\ti\n\ts\n\tt\n\ttoll\n");
    printf("\t   u\n\t   n\n\t   d\n");
    printf("\t   macht Spass\n");
-   return 0; 
+   return 0;
 }
-
-

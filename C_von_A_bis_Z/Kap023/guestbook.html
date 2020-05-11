@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>Eintrag ins G&auml;stebuch</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#FF0000" alink="#FF0000" vlink="#FF0000">
+<h3>Formular zum Eintragen ins G&auml;stebuch</h3>
+
+<pre>
+<form action="http://localhost/cgi-bin/auswert.cgi" method=post>
+<b>Name   : </b>
+<input value="IhrName" name="Name" size="20">
+<b>E-Mail : </b>
+<input value="Mailadresse@mail" name="E-Mail" size="20">
+
+<b>Bewertung dieser Webseite : </b>
+<select name="Bewertung" size="3">
+<option>Note 1</option><option>Note 2</option>
+<option selected>Note 3</option><option>Note 4</option>
+<option>Note 5</option><option>Note 6</option>
+</select><br>
+
+<b>Ihr Eintrag :</b>
+<textarea name="textform" cols="32" rows="6">Textinhalt
+</textarea>
+
+<b>Ihre Programmierkenntnis : </b>
+<input type="checkbox" name="programmieren" value="C/C++">C/C++
+<input type="checkbox" name="programmieren" value="Perl">Perl
+<input type="checkbox" name="programmieren" value="Visual Basic">
+Visual Basic
+
+<input type="reset"><input type=submit value="Abschicken">
+</form>
+</pre>
+</body>
+</html>

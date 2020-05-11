@@ -1,0 +1,25 @@
+<html>
+<head>
+<title>Datenbank</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#FF0000" alink="#FF0000" vlink="#FF0000">
+<h3>Datenbank (E-Mailadressen)</h3>
+
+<hr><br>
+<form action="http://localhost/cgi-bin/add_db.cgi" method=post>
+Neuen Datensatz hinzuf&uuml;gen:
+<pre><b>Name   : </b><input value="IhrName" name="Name" size="20">
+<b>E-Mail : </b><input value="Mailadresse@mail" name="E-Mail" size="20"></pre>
+<input type=submit value="Hinzuf&uuml;gen">
+</form>
+<hr><br>
+<form action="http://localhost/cgi-bin/search_db.cgi" method=post>
+In der Datenbank suchen:
+<pre><b>Name   : </b><input value="IhrName" name="Name" size="20"></pre>
+<input type=submit value="Suchen">
+</form>
+<hr>
+
+
+</body>
+</html>

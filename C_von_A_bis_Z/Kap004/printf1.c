@@ -7,5 +7,3 @@ int main(void) {
    printf(" enthaelt %d Zeichen\n",zeichen);  //10 Zeichen
    return 0;
 }
-
-

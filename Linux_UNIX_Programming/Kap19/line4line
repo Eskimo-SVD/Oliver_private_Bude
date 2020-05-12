@@ -1,0 +1,13 @@
+# Name : line4line
+if [ $# -lt 1 ] 
+then
+   echo "Verwendung: $0 datei_zum_lesen"
+   exit 1
+fi
+# Argument $1 soll zeilenweise eingelesen werden
+count=1
+while read line
+do
+   echo "$count: $line"
+   count=`expr $count + 1`
+done < $1

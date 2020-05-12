@@ -1,0 +1,7 @@
+# Script-Name: seach_user
+if who | grep $1 | wc -l
+then
+   echo "User $1 ist auf dem System eingeloggt"
+   exit 0;
+fi
+echo "User $1 ist nicht auf dem System eingeloggt"

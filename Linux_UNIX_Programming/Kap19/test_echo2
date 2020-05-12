@@ -1,0 +1,3 @@
+# Script-Name: test_echo2
+echo –e "Zeilenvorschub unterdrücken\c"
+echo ":keine Zeilenvorschub"

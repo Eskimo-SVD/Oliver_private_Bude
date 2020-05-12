@@ -1,0 +1,7 @@
+# Script-Name: login_user
+echo "$0 wird ausgeführt"
+# Ab jetzt sämtliche Ausgaben in die Datei out.txt umleiten
+exec >out.txt
+echo "Es sind `who | wc -l` User eingeloggt"
+echo "Hier der Überblick dazu:"
+who

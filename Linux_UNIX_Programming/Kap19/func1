@@ -1,0 +1,10 @@
+# Script-Name: func1
+hallo() {
+   echo "In der Funktion hallo()"
+}
+# Hier beginnt das Hauptprogramm
+echo "Vor der Ausführung der Funktion ..."
+# Jetzt wird die Funktion aufgerufen
+hallo
+# Nach einem Funktionsaufruf
+echo "Weiter gehts im Hauptprogramm"

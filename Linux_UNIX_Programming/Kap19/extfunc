@@ -1,0 +1,4 @@
+# Name: extfunc
+hallo_ext() {
+   echo "$0: Ich die externe Funktion"
+}

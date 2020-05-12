@@ -1,0 +1,11 @@
+# Script-Name : calc
+if [ $# -lt 1 ]
+then
+   echo "usage: $0 Berrechnung"
+   exit 1
+fi
+
+bc -l <<CALC
+$*
+quit
+CALC

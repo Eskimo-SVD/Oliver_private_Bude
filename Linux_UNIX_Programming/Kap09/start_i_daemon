@@ -1,0 +1,22 @@
+#!/bin/sh
+case "$1" in
+   start)
+        echo "Starte mydaemon  "
+        var=`/usr/sbin/mydaemon`
+        echo "....[DONE]"
+        ;;
+    stop)
+        echo "Stoppe mydaemon  "
+        var=`killall /usr/sbin/mydaemon`
+        echo "....[DONE]"
+        ;;
+    restart)
+        var=`killall /usr/sbin/mydaemon`
+        var=`/usr/sbin/mydaemon`
+        echo "....[DONE]"
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
+esac

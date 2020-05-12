@@ -1,0 +1,21 @@
+# Script-Name: backup_jpg
+# Verzeichnis-Name
+backupDIR=`date +%Y-%m-%d`_backup_jpg
+# Überprüfen, ob bereits vorhanden
+[ -e $backupDIR ] &&
+   echo "$backupDIR existiert bereits" && exit 1
+# Verzeichnis anlegen
+mkdir $backupDIR
+
+count=1
+
+for datei in `find $HOME -name "*.jpg" -print 2>/dev/null`
+do
+   # Nur kopieren, wenn Leserechte vorhanden
+   if [ -r $datei ]
+   then
+      cp $datei $backupDIR/pic${count}.jpg
+      count=`expr $count + 1`
+   fi 
+done
+echo "$count Bilder nach $backupDIR kopiert"

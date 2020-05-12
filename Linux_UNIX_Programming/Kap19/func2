@@ -1,0 +1,5 @@
+# Script-Name: func2
+echo "$0: Rufe externe Funktion auf"
+. extfunc
+hallo_ext
+echo "$0: Nach dem Aufruf der externen Funktion"

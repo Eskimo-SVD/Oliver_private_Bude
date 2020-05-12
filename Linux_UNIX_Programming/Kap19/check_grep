@@ -1,0 +1,13 @@
+# Script-Name: check_grep
+if which egrep > /dev/null 2>&1
+then
+   echo "egrep ist auf dem System vorhanden"
+   # Hier Kommandoausführung für egrep
+elif which grep > /dev/null 2>&1
+then
+   echo "grep ist auf dem System vorhanden"
+   # Hier Kommandoausführung für grep
+else
+   echo "Auf Ihrem System ist kein grep vorhanden"
+   exit 1 # Mit einem Wert ungleich 0 beenden
+fi

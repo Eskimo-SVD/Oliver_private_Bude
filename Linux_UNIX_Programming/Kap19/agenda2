@@ -1,0 +1,9 @@
+# Script-Name: agenda2
+case `date +%a` in
+   Mo|Mon) echo "Montag     : Festplatte saubermachen";;
+   Di|Tue) echo "Dienstag   : Rechnungen erstellen";;
+   Mi|Wed) echo "Mittwoch   : Backup machen";;
+   Do|Thu) echo "Donnerstag : Dringendes nacharbeiten";;
+   Fr|Fri) echo "Freitag    : Termine für Montag machen";;
+   *)  echo "Samstag/Sonntag : Wochenende";;
+esac

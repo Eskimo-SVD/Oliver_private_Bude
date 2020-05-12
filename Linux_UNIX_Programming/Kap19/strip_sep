@@ -1,0 +1,16 @@
+# Script-Name: strip_sep
+if [ $# -lt 2 ]
+then
+   echo "Verwendung: $0 Trennzeichen Datei_zum_Lesen"
+   exit 1
+fi
+
+BACKUP="$IFS"
+IFS=$1
+
+while read line
+do
+   echo $line
+done < $2
+
+IFS=$BACKUP

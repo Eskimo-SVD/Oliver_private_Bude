@@ -1,0 +1,11 @@
+# Script-Name bginput
+i=0
+while [ $i -lt 10 ]
+do
+   sleep 1
+   i=`expr $i + 1`
+done
+
+printf "Eingabe machen : "
+read
+echo "Die Eingabe lautet $REPLY"

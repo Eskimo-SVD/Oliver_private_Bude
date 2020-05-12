@@ -1,0 +1,7 @@
+# Script-Name: seach_files
+if grep -l "$1" $HOME/*.*
+then
+   echo "Suche nach $1 war erfolgreich"
+   exit 0;
+fi
+echo "Suche nach $1 war erfolglos"

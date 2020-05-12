@@ -1,0 +1,19 @@
+# Script-Name: search_strip_sep
+if [ $# -lt 3 ]
+then
+   echo "Verwendung: $0 Trennzeichen Datei Suchmuster"
+   exit 1
+fi
+
+BACKUP="$IFS"
+IFS=$1
+
+# line anhand des Trennzeichens IFS auftrennen
+set `grep $3 $2`
+echo "Artikel: $1"
+echo "Stück  : $2"
+echo "Lager  : $3"
+echo "Regal  : $4"
+echo
+
+IFS=$BACKUP

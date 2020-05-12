@@ -1,0 +1,19 @@
+# Script-Name: filetester
+if [ $# -ne 1 ]
+then
+   echo "Verwendung: $0 Datei/Verzeichnis"
+   exit 1
+fi
+
+if [ -e "$1" ]
+then
+   if [ -d "$1" ]
+   then
+      echo "$1 ist ein Verzeichnis"
+   elif [ -f "$1" ]
+   then
+      echo "$1 ist eine normale Datei"
+   fi
+else
+   echo "$1 existiert nicht"
+fi

@@ -1,0 +1,3 @@
+# Script-Name: example_export
+echo exmple_export [1]: $variable1
+echo exmple_export [2]: $variable2

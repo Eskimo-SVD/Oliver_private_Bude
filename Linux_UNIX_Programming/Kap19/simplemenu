@@ -1,0 +1,13 @@
+# Script-Name: simplemenue
+# Das Eingabeprompt
+PS3="Bitte wählen: "
+
+select auswahl in "Punkt 1" "Punkt 2" "Punkt 3" "Ende"
+do
+   # Auswahl auswerten
+   case "$auswahl" in
+      Ende) echo "Ende ausgewählt"; break;;
+        "") echo "Falsche Auswahl";;
+         *) echo "Sie haben $auswahl gewählt"
+   esac
+done

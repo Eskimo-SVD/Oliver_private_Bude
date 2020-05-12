@@ -1,0 +1,17 @@
+# Script-Name: readmore
+if [ $# -lt 1 ]
+then
+   echo "Verwendung: $0 Datei_zum_Lesen"
+   exit 1
+fi
+
+# Neuen Eingabekanal zum Lesen der Datei einrichten
+exec 3< $1
+# Von diesem Kanale zeilenweise einlesen
+while read line <&3
+do
+   echo $line
+   printf "Eine weitere Zeile einlesen [j/n] : "
+   read jn
+   [ "$jn" = "n" ] && break
+done

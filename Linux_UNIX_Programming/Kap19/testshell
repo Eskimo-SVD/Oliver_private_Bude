@@ -1,0 +1,12 @@
+#!/usr/bin/wolfsh
+# Script-Name: testshell
+echo "Demonstration einer Wrapper-Shell"
+# Eigene Befehle ausführen
+trouble
+howdie
+# Blockierter Befehl
+whoami
+# Welche Shell wird genau ausgeführt
+echo $SHELL
+which $SHELL
+echo "Ende der Demonstration"

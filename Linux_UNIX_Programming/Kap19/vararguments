@@ -1,0 +1,3 @@
+# Script-Name: vararguments
+echo "Script-Name                :  $0"
+echo "Die restlichen Argumente   :  $*"

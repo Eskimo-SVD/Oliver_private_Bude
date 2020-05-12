@@ -1,0 +1,13 @@
+# Script-Name: readch
+char=''
+echo "Script mit \"q\" beenden"
+# Terminal in den rohen Modus schalten
+stty raw –echo
+# Die Schleife zum Überprüfen auf q
+while [ "$char" != "q" ]
+do
+   char=`dd bs=1 count=1 2>/dev/null`
+done
+# Den rohen Modus deaktiveren
+stty -raw echo
+echo "Danke, dass war $char"

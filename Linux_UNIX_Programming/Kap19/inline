@@ -1,0 +1,13 @@
+# Script-Name: inline
+cat <<TEXTMARKE
+Dieser Text wird solange mit cat ausgelesen,
+bis die einleitende Marke erneut erscheint.
+Hiermit wird übrigens auch die Kommando-Substitution
+unterstützt.
+Bspw. das Datum: `date`.
+Auch Variablen können hiermit verwendet werden.
+Der Name des Terminals ist $TERM und als Shell wird
+$SHELL ausgeführt. Dem Shellscript $0 haben Sie 
+mit $# Argumenten aufgerufen. Das aktuelle
+Arbeitsverzeichnis lautet: `pwd`
+TEXTMARKE

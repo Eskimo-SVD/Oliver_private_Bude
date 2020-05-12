@@ -1,0 +1,7 @@
+# Scriptname: input
+while [ "$eingabe" != "ende" ]
+do
+   echo "Eingabe machen (mit \"ende\" beenden):"
+   read eingabe
+done
+echo "Script-Ende"

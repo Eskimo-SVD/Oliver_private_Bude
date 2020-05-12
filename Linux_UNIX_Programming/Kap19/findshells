@@ -1,0 +1,9 @@
+#!/bin/sh
+# findshells
+which ksh;
+which sh;
+which bash;
+which ash;
+which csh;
+which tcsh;
+which dash;

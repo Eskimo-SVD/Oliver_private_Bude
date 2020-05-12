@@ -1,0 +1,7 @@
+# Name: vararguments3
+while [ $# -ne 0 ]  # ne = not equal
+do
+    # Tue was mit $1 – hier eine einfach Ausgaben…
+    echo $1
+    shift       # weiterschieben ...
+done

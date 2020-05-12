@@ -1,0 +1,5 @@
+# Script-Name: export_wichtig
+echo export_wichtig: $wichtig1
+echo export_wichtig: $wichtig2
+wichtig2=TEST666
+echo export_wichtig: $wichtig2

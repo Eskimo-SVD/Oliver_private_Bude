@@ -1,0 +1,4 @@
+# Script-Name: undefVar
+var1=einWert
+# Zugriff auf unefiniertem $var2
+echo ---- $var1 ---- $var2 ----

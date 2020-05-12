@@ -1,0 +1,18 @@
+# Script-Name: list_and_edit
+# Das Eingabeprompt
+PS3="Datei zum editieren auswählen: "
+# Hier Ihren Editor eingeben
+EDIT=pico
+
+select auswahl in *.c "Ende" "Hilfe"
+do
+   # Auswahl auswerten
+   case "$auswahl" in
+      Ende) echo "Ende ausgewählt"; break;;
+     Hilfe) echo "Hiermit können Sie C-Programme"
+            echo " mit dem Editor Ihrer Wahl"
+            echo " (hier mit dem Editor $EDIT) editieren";;
+        "") echo "Falsche Auswahl";;
+         *) $EDIT $auswahl; break;;
+   esac
+done

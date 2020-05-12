@@ -1,0 +1,24 @@
+# Script-Name: createfile
+if [ $# -lt 1 ]
+then
+   echo "Verwendung: $0 DATEI/VERZEICHNIS"
+   exit 1
+fi
+
+# Existiert bereits ein Verzeichnis ODER eine Datei mit dem Namen
+if [ -f "$1" -o -d "$1" ]
+then
+   echo "$1 ist bereits als Verzeichnis oder Datei vorhanden"
+   exit 0
+fi
+
+# Datei anlegen
+touch $1
+# Überprüfen ob Datei jetzt existiert
+if [ ! -e "$1" ]
+then
+   echo "Konnte die Datei $1 nicht anlegen"
+   exit 1
+else
+   echo "Datei $1 erfolgreich angelegt"
+fi

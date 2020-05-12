@@ -1,0 +1,8 @@
+# Script-Name: export_var
+wichtig1=TEST1
+wichtig2=TEST2
+echo export_var: $wichtig1
+echo export_var: $wichtig2
+export wichtig2
+./export_wichtig
+echo export_var: $wichtig2

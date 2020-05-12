@@ -1,0 +1,8 @@
+# Script-Name: cmdsub
+verzeichnis=`pwd`
+count=`ls -l | wc -l`
+datum=`date +%d-%m-%Y`
+
+echo "Datum: $datum"
+echo "Im Verzeichnis $verzeichnis befinden \
+sich $count Dateien"

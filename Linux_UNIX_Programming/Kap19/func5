@@ -1,0 +1,21 @@
+# Script-Name: func5
+# Summe beliebiger Zahlen errechnen
+addieren() {
+   sum=0
+   for val in $*
+   do
+      sum=`expr $sum + $val`
+   done
+   echo $sum
+}
+
+# Kleinbuchstaben in Groﬂbuchstaben ‰ndern
+upper() {
+   echo $* | tr 'a-z' 'A-Z'
+}
+
+summe=`addieren 11 12 44`
+echo $summe
+
+string="Hallo Welt"
+echo `upper $string`

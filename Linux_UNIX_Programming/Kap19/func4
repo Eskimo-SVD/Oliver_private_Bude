@@ -1,0 +1,21 @@
+# Script-Name: func4
+usage() {
+   if [ $# -lt 1 ]
+   then
+      echo "usage: $0 datei_zum_lesen"
+      return 1   # return-Code 1 zurückgeben : Fehler
+   fi
+   return 0      # return-Code 0 zurückgeben : Ok
+}
+
+# Hauptprogramm
+usage $*
+# Wurde 1 aus usage zurückgegeben ...
+if [ $? -eq 1 ]
+then
+   printf "Bitte Datei zum Lesen eingeben : "
+   read file
+else
+   file=$1
+fi
+echo "Datei $file wird gelesen"

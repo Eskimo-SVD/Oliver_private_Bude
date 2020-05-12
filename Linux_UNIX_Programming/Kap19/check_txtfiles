@@ -1,0 +1,10 @@
+# Script-Name: check_txtfiles
+for datei in *.txt
+do
+   case "$datei" in
+      *.txt) echo $datei
+         [ -r $datei ] && echo "... ist lesbar"
+         [ -w $datei ] && echo "... ist schreibbar";;
+      *) echo "Keine Textdateien vorhanden";;
+   esac
+done

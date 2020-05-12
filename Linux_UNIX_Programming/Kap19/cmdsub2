@@ -1,0 +1,4 @@
+# Script-Name: cmdsub2
+echo "Datum: `date +%d-%m-%Y`"
+echo "Im Verzeichnis $verzeichnis `pwd` befinden \
+sich `ls -l | wc -l` Dateien"

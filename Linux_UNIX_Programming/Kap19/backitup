@@ -1,0 +1,5 @@
+# Script-Name: backitup
+# verzeichnis hat die Form YYYY-MM-DD_Textdatei
+archiv=$(date +%Y-%m-%d)_Textdateien
+# Textdateien im Heimatverzeichnis archivieren
+tar -cvf $archiv.tar ~/*.txt

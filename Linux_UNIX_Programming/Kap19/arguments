@@ -1,0 +1,6 @@
+# Beachtet die ersten vier Argumente der Kommandozeile
+# Name: arguments
+echo "Erstes Argument  : $1"
+echo "Zweites Argument : $2"
+echo "Drittes Argument : $3"
+echo "Viertes Argument : $4"

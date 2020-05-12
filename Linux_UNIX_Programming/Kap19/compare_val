@@ -1,0 +1,7 @@
+# Script-Name: compare_val
+if [ $1 -eq $2 ]
+then
+   echo "$1 und $2 haben denselben dezimalen Wert"
+else
+   echo "$1 und $2 sind nicht gleich"
+fi

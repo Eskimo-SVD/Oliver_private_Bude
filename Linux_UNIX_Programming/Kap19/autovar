@@ -1,0 +1,8 @@
+# Script-Name: autovar
+echo "Script-Name      :   $0"
+echo "Prozessnummer    :   $$"
+echo "Argument 1       :   $1"
+echo "Alle Argumente   :   $*"
+echo "Anzahl Argumente :   $#"
+# Für den Beendigungsstatus als Demo
+exit 99

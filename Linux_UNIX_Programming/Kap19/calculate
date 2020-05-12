@@ -1,0 +1,7 @@
+# Script-Name: calculate
+# Trigonometrische Berechnung mit der math library –l
+RAD=`echo "a(1)/45" | bc -l`
+echo -e "1° = $RAD rad"
+# Sinus
+SINUS45=`echo "s(45*$varRAD)" | bc -l`
+echo "Der Sinus von 45° ist $SINUS45"

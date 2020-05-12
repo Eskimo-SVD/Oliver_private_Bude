@@ -1,0 +1,11 @@
+# Script-Name: subshell
+var=123
+echo "var im Script : $var"
+# Ein Subshell starten
+(
+  echo "var in der Subshell : $var"
+  # Wert ändern
+  var=321
+  echo "var in der Subshell : $var"
+)
+echo "var im Script : $var"

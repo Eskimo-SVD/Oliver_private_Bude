@@ -1,0 +1,14 @@
+# Script-Name: mysysinfo
+echo "**********************************"
+echo "Maximal vorhandener Speicher:"
+cat /proc/meminfo | grep MemTotal
+echo "**********************************"
+echo "CPU-Geschwindigkeit (Mhz):"
+cat /proc/cpuinfo | grep MHz
+echo "**********************************"
+echo "Betriebssystem:"
+cat /proc/sys/kernel/ostype
+echo "**********************************"
+echo "Kernel-Version:"
+cat /proc/sys/kernel/osrelease
+echo "**********************************"

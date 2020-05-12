@@ -1,0 +1,10 @@
+# Script-Name: agenda
+day=`date +%a`
+case "$day" in
+   Mo) echo "Montag     : Festplatte saubermachen";;
+   Di) echo "Dienstag   : Rechnungen erstellen";;
+   Mi) echo "Mittwoch   : Backup machen";;
+   Do) echo "Donnerstag : Dringendes nacharbeiten";;
+   Fr) echo "Freitag    : Termine für Montag ausmachen";;
+   Sa|So) echo "Samstag/Sonntag : Wochenende";;
+esac

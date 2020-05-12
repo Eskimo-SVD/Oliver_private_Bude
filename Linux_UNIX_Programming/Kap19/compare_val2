@@ -1,0 +1,14 @@
+# Script-Name: compare_val2
+if [ $# -ne 2 ]
+then
+   echo "Verwendung: $0 Wert1 Wert2"
+   echo "Sie müssen zwei Dezimalzahlen eingeben"
+   exit 1
+fi
+ 
+if [ $1 -eq $2 ]
+then
+   echo "$1 und $2 haben denselben dezimalen Wert"
+else
+   echo "$1 und $2 sind nicht gleich"
+fi

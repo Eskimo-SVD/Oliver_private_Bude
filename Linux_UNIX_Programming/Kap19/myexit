@@ -1,0 +1,7 @@
+#!/bin/sh
+# Script-Name: myexit
+echo "Ping..."
+# ... Shellscript wird mit dem Wert 99 vorzeitig beendet
+exit 99
+# ... diese Ausgabe wird nicht mehr ausgeführt
+echo "...Pong"

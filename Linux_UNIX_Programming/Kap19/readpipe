@@ -1,0 +1,5 @@
+# readpipe
+while read zeile
+do
+   echo $zeile
+done < apipe

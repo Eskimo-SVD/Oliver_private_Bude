@@ -1,0 +1,14 @@
+# Script-Name: typeset_ex
+# var1 soll ein Integer sein
+typeset -i var1
+
+var2=100
+var3=100
+# da var1 als Integer gekennzeichnet wurde, gilt
+# dies gleichzeitig auch für die anderen beiden Werte
+var1=var2+var3
+echo $var1
+# Achtung, dies gilt aber nur vor var1.
+# Folgendes geht nicht mehr:
+var2=var1+var3
+echo $var2

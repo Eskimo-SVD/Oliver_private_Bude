@@ -1,0 +1,5 @@
+# Name: vararguments2
+for arg in $*
+   do
+      echo '> ' $arg ' <'
+   done

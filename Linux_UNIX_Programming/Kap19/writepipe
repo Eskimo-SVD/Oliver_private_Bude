@@ -1,0 +1,8 @@
+# Script-Name: writepipe
+while true
+do
+   echo "Das kommt in die Pipe"
+   echo "Eine zweite Zeile gefällig"
+   echo "Und zum guten Schluss noch eine"
+   break
+done > apipe

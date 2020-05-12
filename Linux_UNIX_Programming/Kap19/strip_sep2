@@ -1,0 +1,23 @@
+# Script-Name: strip_sep2
+if [ $# -lt 2 ]
+then
+   echo "Verwendung: $0 Trennzeichen Datei_zum_Lesen"
+   exit 1
+fi
+
+BACKUP="$IFS"
+IFS=$1
+
+while read line
+do
+   # line anhand des Trennzeichens IFS auftrennen
+   set $line
+   # Natürlich stehen hier auch $@, $* oder $# zur Verfügung
+   echo "Artikel: $1"
+   echo "Stück  : $2"
+   echo "Lager  : $3"
+   echo "Regal  : $4"
+   echo
+done < $2
+
+IFS=$BACKUP

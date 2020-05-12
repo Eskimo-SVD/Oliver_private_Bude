@@ -1,0 +1,23 @@
+# Script-Name: trap2
+# Signalhandler für SIGINT
+trap_SIGINT () {
+   printf "Schreibvorgang wirklich abbrechen [j/n]:"
+   read jn
+   [ $jn = j ] && exit 1
+}
+
+
+# Signal SIGINT(2) abfangen (STRG)+(C)
+trap 'trap_SIGINT' 2
+count=1
+sets=7
+
+echo "Schreibe $sets Datensätze"
+# Hier wird ein Schreibvorgang simuliert
+while [ $count -lt $sets ]
+do
+   echo "Datensatz $count (von $sets) wird geschrieben"
+   sleep 2
+   count=`expr $count + 1`
+done
+echo "Schreibvorgang erfolgreich ausgeführt"

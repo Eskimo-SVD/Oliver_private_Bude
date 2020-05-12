@@ -1,0 +1,23 @@
+# Script-Name: cmp_string
+if [ $# -ne 2 ]
+then
+   echo "Verwendung: $0 Zeichenkette1 Zeichenkette2"
+   exit 1
+fi
+
+if [ "$1" = "$2" ]
+then
+   echo "Die beiden Zeichenketten sind gleich ($1/$2)"
+else
+   echo "Die beiden Zeichenketten sind nicht gleich ($1/$2)"
+fi
+
+if [ -z "$1" ]
+then
+   echo "Arugment 1 ist leer"
+fi
+
+if [ -z "$2" ]
+then
+   echo "Argument 2 ist leer"
+fi

@@ -1,0 +1,14 @@
+# Script-Name: argumente
+if [ $# -lt 1 ]
+then
+   echo "Fehler: $0 argument(e)"
+   exit 1
+fi
+
+counter=0
+
+for arg in "$@"
+do
+   counter=`expr $counter + 1`
+   echo "$counter: $arg"
+done

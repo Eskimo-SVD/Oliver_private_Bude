@@ -1,0 +1,9 @@
+# Script-Name: countdown
+echo "Countdown:"
+i=5
+while [ $i -gt 0 ]
+do
+   echo $i
+   sleep 1          # Eine Sekunde anhalten
+   i=`expr $i – 1`
+done

@@ -1,0 +1,9 @@
+# Script-Name: format_lager
+FILE=lager.csv
+SEP=";"
+for data in `cat $FILE`
+do
+   line=`echo $data | tr $SEP ' '`
+   set $line
+   printf "Ware: %-15s Anzahl: %-5d Lager: %-10s Regal: %-10s\n" $1 $2 $3 $4
+done

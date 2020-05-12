@@ -1,0 +1,18 @@
+# Script-Name: trap1
+# Signal SIGINT(2) abfangen (STRG)+(C)
+trap 'echo Schreibvorgang kann nicht abgebrochen werden' 2
+count=1
+sets=7
+
+echo "Schreibe $sets Datensätze"
+# Hier wird ein Schreibvorgang simuliert
+while [ $count -lt $sets ]
+do
+   #...
+   # Hier kommen die wichtigen Kommandos und Programme hin
+   #...
+   echo "Datensatz $count (von $sets) wird geschrieben"
+   sleep 2
+   count=`expr $count + 1`
+done
+echo "Schreibvorgang erfolgreich ausgeführt"

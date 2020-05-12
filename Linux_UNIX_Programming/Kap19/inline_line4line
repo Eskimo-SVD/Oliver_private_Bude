@@ -1,0 +1,13 @@
+# Name : inline_line4line
+count=1
+while read line
+do
+   echo "$count. Zeile : $line"
+   count=`expr $count + 1`
+done <<TEXT
+Erste Zeile
+`date`
+Homeverzeichnis: $HOME
+Arbeitsverzeichnis:  `pwd`
+Letzte Zeile
+TEXT

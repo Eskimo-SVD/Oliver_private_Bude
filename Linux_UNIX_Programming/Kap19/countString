@@ -1,0 +1,5 @@
+# Demonstriert das Kommando awk im Shellscript
+# Name : countString
+text="Hallo Welt"
+laenge=`echo $text | awk '{print length($text)}'`
+echo "$text enthaelt $laenge Zeichen"

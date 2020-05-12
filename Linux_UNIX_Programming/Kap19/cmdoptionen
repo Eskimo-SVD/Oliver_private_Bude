@@ -1,0 +1,14 @@
+# Script-Name: cmdoptionen
+if [ $# -lt 1 ]
+then
+   echo "Fehler: $0 --help gibt weitere Informationen"
+   exit 1
+fi
+
+case "$1" in
+   -[hH]|--help|--hilfe|-\?)
+       echo "Sie haben die Hilfe ausgewählt";;
+   -[tT]|--test) echo "Sie haben Test ausgewählt";;
+   -*) echo "Sie haben eine unbekannte Option ausgewählt";;
+    *) echo "Sie haben keine Option ausgewählt";;
+esac

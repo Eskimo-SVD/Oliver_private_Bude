@@ -1,0 +1,17 @@
+# Script-Name: login_time
+if [ $# -ne 1 ]
+then
+   echo "Verwendung $0 username"
+   exit 1
+fi
+
+set `who | grep $1`
+
+# Wurde Überhaupt etwas gefunden
+if [ $# -lt 1 ]
+then
+   echo "Kein Üereinstimmung mit $1 gefunden"
+   exit 0
+fi
+
+echo "($1) Login-Zeit: $4"

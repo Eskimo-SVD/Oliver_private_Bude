@@ -7,4 +7,3 @@ int main(void) {
       printf("%f",i);
    return 0;
 }
-

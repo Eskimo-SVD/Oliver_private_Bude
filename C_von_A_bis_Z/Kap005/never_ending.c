@@ -1,4 +1,4 @@
-/* never_ending.c */
+ /* never_ending.c */
 #include <stdio.h>
 
 int main(void) {
@@ -7,4 +7,3 @@ int main(void) {
       printf("%f",i);
    return 0;
 }
-

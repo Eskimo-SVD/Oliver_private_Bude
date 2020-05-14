@@ -13,5 +13,4 @@ int main(void) {
    // Ausgabe vom Real- und Imaginärteil
    printf("%f + %f\n", creal(fc), cimag(fc));
    return EXIT_SUCCESS;
-} 
-
+}

@@ -13,4 +13,3 @@ int main(void) {
    printf("34343434 : %d Bytes\n", sizeof(34343434));
    return 0;
 }
-

@@ -5,11 +5,10 @@ int main(void) {
    int i=1;
 
    printf("i=%d\n",i);         // i=1
-   i++;  
+   i++;
    printf("i=%d\n",i);         // i=2
    printf("i=%d\n",i++);       // i=2
    printf("i=%d\n",i);         // i=3
    printf("i=%d\n",++i);       // i=4
    return 0;
 }
-

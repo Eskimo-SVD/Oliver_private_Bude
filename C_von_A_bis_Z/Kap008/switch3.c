@@ -18,9 +18,8 @@ int main(void) {
       case '*': printf("%d * %d = %d \n", a, b, a*b);
                 break;
       case '/': printf("%d / %d = %d \n", a, b, a/b);
-                break; 
+                break;
       default: printf("%c? kein Rechenoperator \n", opera);
       }      /* Ende switch */
  return 0;
 }
-

@@ -7,7 +7,7 @@ int bignum(int a, int b) {
    else if(a < b)
       return b;
    else
-      return 0; /* beide Zahlen sind gleich groß */
+      return 0; /* beide Zahlen sind gleich groï¿½ */
 }
 
 int main(void) {
@@ -19,9 +19,8 @@ int main(void) {
 
    big = bignum(wert1, wert2);
    if(big != 0)
-      printf("%d ist die größere der beiden Zahlen\n",big);
+      printf("%d ist die grï¿½ï¿½ere der beiden Zahlen\n",big);
    else
       printf("Beide Zahlen haben denselben Wert\n");
    return 0;
 }
-

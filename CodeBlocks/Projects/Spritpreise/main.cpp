@@ -17,7 +17,7 @@
 * $Name   : Oliver Krueger, Pommernstr. 11, 29640 Snevern, Mobil: +49 160 91576995
 *****************************************************************************************
 *
-* Copyright 2018 by kruegerSYS
+* Copyright 2018 - 2020 by kruegerSYS
 *
 *****************************************************************************************
 * 20200525 - Upload nach GitHub, more Know-How for Database Connection

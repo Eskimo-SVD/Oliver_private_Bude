@@ -48,4 +48,3 @@ int main()
         cout << fuhrpark[i]->kostet(120, 3) << endl;
     }
 }
-

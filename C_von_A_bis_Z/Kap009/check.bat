@@ -1,5 +1,5 @@
 :: Programmname: check.bat
-:: keine Anzeige der Eingabe (auch nicht des echo's) 
+:: keine Anzeige der Eingabe (auch nicht des echo's)
 @echo off
 
 :: Programm starten

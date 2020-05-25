@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1551782112 source:d:\luvportableapp\codeblocksportable\projects\basal_metabolic_rate\main.cpp
+	<iostream>
+	<fstream>
+	<time.h>
+	<string>
+
+1551877632 source:h:\luvportableapp\codeblocksportable\projects\basal_metabolic_rate\main.cpp
+	<iostream>
+	<fstream>
+	<time.h>
+	<string>
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1545920812 source:d:\luvportableapp\codeblocksportable\projects\schroe_prog_001\main.cpp
+	<iostream>
+	<locale>
+	<cstdlib>
+

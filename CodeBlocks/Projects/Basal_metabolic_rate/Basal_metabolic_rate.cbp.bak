@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Basal_metabolic_rate"/>
+		<Option pch_mode="2"/>
+		<Option compiler="gcc"/>
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug_x64/Basal_metabolic_rate" prefix_auto="1" extension_auto="1"/>
+				<Option object_output="obj/Debug_x64/"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-g"/>
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release_x64/Basal_metabolic_rate" prefix_auto="1" extension_auto="1"/>
+				<Option object_output="obj/Release_x64/"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-O2"/>
+				</Compiler>
+				<Linker>
+					<Add option="-s"/>
+				</Linker>
+			</Target>
+			<Target title="Archive">
+				<Option output="Basal_metabolic_rate" prefix_auto="1" extension_auto="1"/>
+				<Option type="0"/>
+				<Option compiler="gcc"/>
+				<ExtraCommands>
+					<Add after="..\..\Tools\zip -r $(PROJECT_NAME)_$(TODAY).zip src h obj bin main.cpp $(PROJECT_NAME).cbp"/>
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall"/>
+			<Add option="-fexceptions"/>
+		</Compiler>
+		<Unit filename="main.cpp">
+			<Option target="Debug"/>
+			<Option target="Release"/>
+		</Unit>
+		<Extensions>
+			<code_completion/>
+			<envvars/>
+			<debugger/>
+			<lib_finder disable_auto="1"/>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

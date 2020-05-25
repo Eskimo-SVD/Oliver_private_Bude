@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1545131332 source:d:\luvportableapp\codeblocksportable\projects\test_write_file\main.cpp
+	<iostream>
+	<time.h>
+	<fstream>
+

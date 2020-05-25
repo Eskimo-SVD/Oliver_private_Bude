@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1545130232 source:d:\luvportableapp\codeblocksportable\projects\gregorien_calendar\main.cpp
+	<iostream>
+	<iomanip>
+	<cmath>
+	<windows.h>
+	<cstdlib>
+

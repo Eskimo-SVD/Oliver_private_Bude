@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1545771674 source:d:\luvportableapp\codeblocksportable\projects\mwst\main.cpp
+	<iostream>
+	<iomanip>
+

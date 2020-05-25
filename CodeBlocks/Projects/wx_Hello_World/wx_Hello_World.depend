@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1514140570 source:d:\luvportableapp\codeblocksportable\projects\wx_hello_world\resource.rc
+	"wx/msw/wx.rc"
+
+1547057078 source:d:\luvportableapp\codeblocksportable\projects\wx_hello_world\wx_hello_worldapp.cpp
+	"wx_pch.h"
+	"wx_Hello_WorldApp.h"
+	"wx_Hello_WorldMain.h"
+
+1547057078 d:\luvportableapp\codeblocksportable\projects\wx_hello_world\wx_hello_worldapp.h
+	<wx/app.h>
+
+1547057078 d:\luvportableapp\codeblocksportable\projects\wx_hello_world\wx_hello_worldmain.h
+	<wx/wx.h>
+	"wx_Hello_WorldApp.h"
+	<wx/button.h>
+	<wx/statline.h>
+
+1547057078 source:d:\luvportableapp\codeblocksportable\projects\wx_hello_world\wx_hello_worldmain.cpp
+	"wx_pch.h"
+	"wx_Hello_WorldMain.h"
+

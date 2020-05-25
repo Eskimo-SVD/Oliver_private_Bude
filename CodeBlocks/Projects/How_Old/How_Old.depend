@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1544624523 source:c:\users\kru\documents\programming\how_old\main.cpp
+	<iostream>
+
+1544785978 source:d:\luvportableapp\codeblocksportable\projects\how_old\main.cpp
+	<iostream>
+	<time.h>
+

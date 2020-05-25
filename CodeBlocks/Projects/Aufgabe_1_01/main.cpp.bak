@@ -1,0 +1,22 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main(int argc, const char * argv[]) {
+
+    cout << 10 + 32 << endl;
+
+    string a = "10";
+    string b = "32";
+
+    cout << a + b << endl;
+
+    string greeting = "1234";
+    cout << greeting << endl;
+
+    long greetingLong = 1234;
+    cout << greetingLong << endl;
+
+    return 0;
+}

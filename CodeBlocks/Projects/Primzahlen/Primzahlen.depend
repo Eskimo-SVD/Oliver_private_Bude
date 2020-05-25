@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1546175760 source:d:\luvportableapp\codeblocksportable\projects\primzahlen\main.cpp
+	<iostream>
+	<fstream>
+	<time.h>
+

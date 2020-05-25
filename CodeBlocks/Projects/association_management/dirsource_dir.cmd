@@ -1,0 +1,1 @@
+dir D:\LuVPortableApp\CodeBlocksPortable\Projects\association_management

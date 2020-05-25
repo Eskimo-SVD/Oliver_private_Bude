@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1545589898 source:d:\luvportableapp\codeblocksportable\projects\eliza\main.cpp
+	<iostream>
+	<string>
+	<vector>
+

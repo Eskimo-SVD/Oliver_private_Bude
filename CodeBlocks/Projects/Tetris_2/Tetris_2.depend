@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1546941714 source:d:\luvportableapp\codeblocksportable\projects\tetris_2\main.cpp
+	<iomanip>
+	<iostream>
+	<vector>
+	<random>
+	<conio.h>
+

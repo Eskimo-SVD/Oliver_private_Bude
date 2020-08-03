@@ -1,4 +1,4 @@
-/* backslash.c */
+/* backslash.c modified for testing*/
 #include <stdio.h>
 
 int main (void) {
@@ -6,4 +6,3 @@ int main (void) {
 dies hier ist erlaubt, dank Backslash");
    return 0;
 }
-

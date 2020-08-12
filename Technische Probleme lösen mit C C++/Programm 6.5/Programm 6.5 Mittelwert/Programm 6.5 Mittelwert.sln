@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "programm 6.5 Mittelwert", "programm 6.5 Mittelwert\programm 6.5 Mittelwert.vcproj", "{3EC5BB47-5440-44AA-A4C6-B61EE1E5CA7E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3EC5BB47-5440-44AA-A4C6-B61EE1E5CA7E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3EC5BB47-5440-44AA-A4C6-B61EE1E5CA7E}.Debug|Win32.Build.0 = Debug|Win32
+		{3EC5BB47-5440-44AA-A4C6-B61EE1E5CA7E}.Release|Win32.ActiveCfg = Release|Win32
+		{3EC5BB47-5440-44AA-A4C6-B61EE1E5CA7E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

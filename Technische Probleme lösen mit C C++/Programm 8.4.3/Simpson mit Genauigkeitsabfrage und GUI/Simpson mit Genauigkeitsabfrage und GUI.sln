@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Simpson mit Genauigkeitsabfrage und GUI", "Simpson mit Genauigkeitsabfrage und GUI\Simpson mit Genauigkeitsabfrage und GUI.vcproj", "{A88735E3-474D-4A58-894F-112E4E82DE0D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A88735E3-474D-4A58-894F-112E4E82DE0D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A88735E3-474D-4A58-894F-112E4E82DE0D}.Debug|Win32.Build.0 = Debug|Win32
+		{A88735E3-474D-4A58-894F-112E4E82DE0D}.Release|Win32.ActiveCfg = Release|Win32
+		{A88735E3-474D-4A58-894F-112E4E82DE0D}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

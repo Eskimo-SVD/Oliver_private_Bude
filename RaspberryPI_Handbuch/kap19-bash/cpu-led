@@ -1,0 +1,33 @@
+#!/bin/bash
+# Datei /home/pi/cpu-led
+greenpin=26
+yellowpin=24
+redpin=22
+gpio -1 mode $greenpin  out
+gpio -1 mode $yellowpin out
+gpio -1 mode $redpin    out
+
+# CPU-Temperatur
+temp=$(cat /sys/class/thermal/thermal_zone0/temp)
+echo $temp
+
+# grüne LED ansteuern
+if [[ "$temp" -ge 30000 &&  "$temp" -le 45000 ]]; then
+  gpio -1 write $greenpin 1
+else
+  gpio -1 write $greenpin 0
+fi
+
+# gelbe LED ansteuern
+if [[ "$temp" -ge 45000 &&  "$temp" -le 60000 ]]; then
+  gpio -1 write $yellowpin 1
+else
+  gpio -1 write $yellowpin 0
+fi
+
+# rote LED ansteuern
+if [[ "$temp" -ge 60000 ]]; then
+  gpio -1 write $redpin 1
+else
+  gpio -1 write $redpin 0
+fi

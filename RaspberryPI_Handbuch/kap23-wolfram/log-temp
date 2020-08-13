@@ -1,0 +1,5 @@
+#!/bin/bash
+# Script-Datei /etc/myscripts/log-temp
+d=$(date +'%Y-%m-%dT%H:%M,')
+awk -vd=$d 'NR==2 {print d $10}' \
+  /sys/devices/w1_bus_master1/10-*/w1_slave >> /var/log/temp.csv

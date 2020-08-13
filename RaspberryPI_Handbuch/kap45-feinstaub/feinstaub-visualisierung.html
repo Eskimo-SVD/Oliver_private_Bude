@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>Feinstaub</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/\
+      1.6.1/jquery.min.js"></script>
+    <script id="jqueryui" src="//ajax.googleapis.com/ajax/\
+      libs/jqueryui/1.8.10/jquery-ui.min.js" defer async></script>
+    <script src="//www.google.com/jsapi?key=\
+      AIzaSyCZfHRnq7tigC-COeQRmoa9Cxr0vbrK6xw"></script>
+  </head>
+  <body class="docs framebox_body">
+
+<div id="chart_div" style="width: 700px; height: 130px;"></div>
+<script type="text/javascript" 
+        src="https://www.google.com/jsapi?autoload=\
+             {'modules':[{'name':'visualization',\
+             'version':'1.0','packages':['gauge']}]}"></script>
+<script type="text/javascript">
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+
+  var data = google.visualization.arrayToDataTable([
+    ['Label', 'Value'],
+    ['PM10', 0],
+    ['PM2.5', 0]
+  ]);
+var options = {
+    max: 150,
+    width: 300, height: 180,
+    redFrom: 100, redTo: 150,
+    yellowFrom:50, yellowTo: 150,
+    greenFrom:0, greenTo:50,
+    animation:{duration: 2900,
+    easing: 'inAndOut'},
+    minorTicks: 2
+  };
+
+  var chart = new google.visualization.Gauge(
+            document.getElementById('chart_div'));
+  chart.draw(data, options);
+
+  setInterval(function() {
+    $.get("ppm10.txt", function(text) {
+    data.setValue(0, 1, text );
+    chart.draw(data, options);
+    });
+  },3000);
+
+  setInterval(function() {
+    $.get("ppm25.txt", function(text) {
+    data.setValue(1, 1, text );
+    chart.draw(data, options);
+    });
+  },5000);
+}
+</script>
+</table>
+</body>
+</html>

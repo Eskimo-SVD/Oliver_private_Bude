@@ -1,0 +1,14 @@
+#!/bin/bash
+gpio -1 mode 26 out         # Pin 26: LED
+gpio -1 mode 21 in          # Pin 21: Taster
+gpio -1 mode 21 up          # Pull-up-Widerstand
+status=0 
+gpio -1 write 26 $status    # LED anfänglich aus
+echo "Ende mit <Strg>+<C>"
+
+while true; do 
+  gpio -1 wfi 21 falling     # warten
+  status=$((1-status))      # Status invertieren
+  gpio -1 write 26 $status  # LED aktualisieren
+  sleep 0.25                # zum Entprellen
+done

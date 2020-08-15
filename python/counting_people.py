@@ -13,7 +13,7 @@ toes = 10 * p
 fingers = toes
 
 #Ausgaben
-print ("People    :", people)
+print ("People    :",people) #{people:%8.2f})
 print ("P         :",p)
 print ("Heads     :",heads)
 print ("Fingers   :",fingers)

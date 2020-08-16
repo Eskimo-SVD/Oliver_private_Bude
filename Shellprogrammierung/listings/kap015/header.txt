@@ -1,0 +1,10 @@
+<HTML>
+<HEAD><TITLE>Ein Titel</TITLE>
+</HEAD>
+<BODY bgcolor="#FFFF00" text="#000000">
+<HR SIZE=3>
+<H1>Ausgabe Anfang: </H1>
+<HR SIZE=3>
+<P>
+<SMALL>
+<PRE>

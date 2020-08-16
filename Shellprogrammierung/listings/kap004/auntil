@@ -1,0 +1,16 @@
+# Demonstriert die Verwendung einer until Schleife
+# auntil
+
+# Hier soll ein Kommando Namens "abc" installiert werden
+
+until abc /dev/null > /dev/null 2>&1
+do
+   echo "Kommanod abc scheint hier nicht zu existieren"   
+   # Jetzt können Sie "abc" selbst nachinstallieren ...
+   # Wir verwenden hierbei einfach ein Hauswerkzeug mit cat
+   new=`which cat`  # kompletten Pfad zu cat
+   cp $new $HOME/bin/abc
+done
+
+# ... den eigenen Quellcode ausgeben
+abc $0

@@ -1,0 +1,85 @@
+#!/bin/sh
+# Name: mailcpio
+# Archiviert Dateien und Verzeichnisse per cpio, komprimiert mit
+# gzip und verschickt das Archiv an eine bestimmte E-Mail-Adresse
+
+PROGN="$0"
+
+# Benötigte Programme: mail oder mailx...
+if [ "`which mailx`" != "" ]
+then
+   Mail="mailx"
+   if [ "`which mail`" != "" ]
+   then
+      Mail="mail"
+   fi
+else
+  echo "Das Script benötigt 'mail' bzw. 'mailx' zur Ausführung!"
+  exit 1
+fi
+
+# Benötigt 'uuencode' für den Anhang
+if [ "`which uuencode`" = "" ]
+then
+   echo "Das Script benötigt 'uuencode' zur Ausführung!"
+   exit 1
+fi
+
+# Benötigt 'cpio'
+if [ "`which cpio`" = "" ]
+then
+   echo "Das Script benötigt 'cpio' zur Ausführung!"
+   exit 1
+fi
+   
+
+Usage () {
+   echo "$PROGN - Versendet ganze Verzeichnisse per E-Mail"
+   echo "usage: $PROGN [option] e-mail-adresse"\
+        " {datei|Verzeichnis} [datei|Verzeichnis] ..."
+   echo
+   echo "Hierbei werden alle angegeben Dateien und "\
+        "Verzeichnisse (inskl. Unterverzeichnisse)"
+   echo "an eine angegebene Mail-Adresse gesendet. Das"\
+        " Archiv wird mittels gzip komprimiert."
+   echo "Option:"
+   echo "-s : Keine Ausgabe von cpio"
+   echo "-v : Macht cpio gespächig"
+   exit 1
+}
+
+while [ $# -gt 0 ]
+do
+   case "$1" in
+      -v)   option=Bv ;;
+      -s)   Silent=yes ;;
+      --)   shift; break ;;
+      -*)   Usage ;;
+       *)   break ;;
+    esac
+    shift
+done
+
+if [ $# -lt 2 ]
+then
+   Usage
+fi
+
+User="$1"; shift
+
+for Dir
+do
+   Archive="${Dir}.cpio.gz"
+   # Verzeichnis nicht lesbar ...
+   if [ ! -r "$Dir" ]
+   then
+      echo "Kann $Dir nicht lesen - (wird ignoriert)"
+      continue
+   fi
+   [ "$Silent" = "" ] && echo "$Archive   ->    "
+   find "$Dir" -type f -print |
+   cpio -o${option} | 
+   gzip |
+   uuencode "$Archive" | 
+   $Mail -s "$Archive" "$User" || exit 1
+done

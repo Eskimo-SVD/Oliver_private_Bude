@@ -1,0 +1,14 @@
+# Demonstriert die Funktion trap zum Abfangen von Signalen
+# Name : trap7
+
+# Signal EXIT abfangen
+trap 'exithandler' 0
+
+exithandler() {
+   echo "Das Script wurde vorzeitig mit exit beendet!"
+   # Hier noch anfallende Aufräumarbeiten ausführen
+}
+
+# Hauptfunktion
+echo "In der Hauptfunktion" && exit 1
+echo "Wird nicht mehr ausgeführt"

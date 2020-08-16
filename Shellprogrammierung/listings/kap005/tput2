@@ -1,0 +1,11 @@
+# Demonstriert den tput-Befehl
+# tput2
+
+fett=`tput bold`
+invers=`tput rev`
+unterstrich=`tput smul`
+reset=`tput sgr0`
+
+echo "Text wird ${fett}Hervorgehoben${reset}"
+echo "Oder gerne auch ${invers}Invers${reset}"
+echo "Natürlich auch mit ${unterstrich}Unterstrich${reset}"

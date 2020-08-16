@@ -1,0 +1,65 @@
+# Demonstriert einige Datei-Tests
+# afiletester
+
+file=atestfile.txt
+dir=atestdir
+
+# Ein Verzeichnis anlegen
+if [ -e $dir ]  # existiert etwas mit dem Namen $dir?
+then
+   if [ -d $dir ]   # Ja! Und ist es auch ein Verzeichnis?
+   then
+      echo "$dir existiert bereits und ist auch ein Verzeichnis"
+   elif [ -f $dir ] # ... oder ist es eine gewöhnliche Datei?
+   then
+      echo "$dir exstiert bereits, ist aber eine reguläre Datei"
+   else
+      echo "Eine Datei namens $dir existiert bereits"
+   fi
+else  # $dir existiert noch nicht, also anlegen
+   mkdir $dir
+   if [ -e $dir ] # ... jetzt vorhanden?
+   then
+      echo "Verzeichnis $dir erfolgreich angelegt"
+   else
+      echo "Konnte Verzeichnis $dir nicht anlegen"
+   fi
+fi
+
+# Eine Datei anlegen
+if [ -e $file ]  # existiert etwas mit dem Namen $file?
+then
+   echo "$file existiert bereits"
+else
+   touch $file # Datei anlegen
+   if [ -e $file ]
+   then
+      echo "$file erfolgreich angelegt"
+   else
+      echo "Konnte $file nicht anlegen"
+      exit 1
+   fi
+fi
+
+# Zugriffsrechte und Attribute der Datei ermitteln
+echo "$file ist ..."
+if [ -r $file ]
+then
+   echo "... lesbar"
+else
+   echo "... nicht lesbar"
+fi
+
+if [ -w $file ]
+then 
+   echo "... schreibbar"
+else
+   echo "... nicht schreibbar"
+fi
+
+if [ -x $file ] 
+then 
+   echo "... ausführbar"
+else
+   echo "... nicht ausführbar"
+fi

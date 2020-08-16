@@ -1,0 +1,19 @@
+# Demonstriert die Verwendung von Parametern
+# Name : afunc6
+
+# Funktion readcmd
+readcmd() {
+   i=1
+   echo "Anzahl der Parameter in der Kommandozeile : $#"
+   
+   for var in $*
+   do
+      echo "$i. Parameter : $var"
+      i=`expr $i + 1`
+   done
+}
+
+# Hauptprogramm
+echo "Vor der Funktion ..."
+readcmd
+echo "... nach der Funktion"

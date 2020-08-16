@@ -1,0 +1,8 @@
+# Demonstriert eine Endlosschleife mit while
+# aneverending
+
+while true
+do
+   echo "In der Endlosschleife"
+   sleep 5    # 5 Sekunden warten
+done

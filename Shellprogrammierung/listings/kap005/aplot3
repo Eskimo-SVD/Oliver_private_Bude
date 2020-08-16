@@ -1,0 +1,17 @@
+# Demonstriert einen Plot mit gnuplot und dem Here-Dokument
+# Name : aplot3
+
+FILE=messdat.dat
+
+gnuplot -persist <<PLOT
+set xlabel "Monat"
+set ylabel "Grad/Celcius"
+set yrange [-10:40]
+set xrange [0:7]
+set label "6 Monate/2007-2010" at 2,20
+set title "Temperaturdaten"
+plot "$FILE" using (column(1)-.15):2 t "2007" with impuls ,\
+   "$FILE" using (column(1)-.05):3 t "2008" with impuls ,\
+   "$FILE" using (column(1)+.05):4 t "2009" with impuls ,\
+   "$FILE" using (column(1)+.15):5 t "2010" with impuls
+PLOT

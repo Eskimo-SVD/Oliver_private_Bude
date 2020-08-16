@@ -1,0 +1,10 @@
+# Name : PipeServer
+
+mknod meine_pipe p
+
+while true
+do
+   # Wartet auf Daten aus der Pipe
+   read zeile < meine_pipe
+   echo $zeile
+done

@@ -1,0 +1,20 @@
+# Demonstriert die select-Anweisung
+# aselect3
+
+# Ein neues Auswahl-Prompt
+PS3="Datei zum Editieren auswählen : "
+# Hier den Editor Ihrer Wahl angeben
+EDIT=vi
+
+select auswahl in * Ende
+do
+   case "$auswahl" in
+      Ende)  echo "Ende" ; break ;;
+        "")  echo "$REPLY: Ungültige Auswahl" ;;
+         *)  [ -d "$auswahl" ] && \
+             echo "Verzeichnis kann nicht editiert werden" &&\
+             continue
+             $EDIT $auswahl
+             break ;;
+   esac 
+done

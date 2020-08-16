@@ -1,0 +1,6 @@
+# Name : apoint
+
+# Konfigurations-Daten einlesen
+. aconf.conf
+
+echo "Spracheinstellung: $lang; ($prg)"

@@ -1,0 +1,4 @@
+J.Wolf::10::Socken
+P.Weiss::5::T-Shirts
+U.Hahn::3::Hosen
+Z.Walter::6::Handschuhe

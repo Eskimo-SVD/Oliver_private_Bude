@@ -1,0 +1,14 @@
+# Demonstriert die Verwendung von Here-Dokumenten
+# Name : ahere4
+
+if [ $# == 0 ]
+then
+   echo "usage: $0 Ausdruck"
+   exit 1
+fi
+
+# Option -l für die mathematische Bibliothek
+bc -l <<CALC
+$*
+quit
+CALC

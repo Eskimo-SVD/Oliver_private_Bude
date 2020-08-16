@@ -1,0 +1,35 @@
+# Demonstriert den tput-Befehl
+# tput4
+
+Dline=`tput dl1`     # Zeile löschen
+Iline=`tput il1`     # Zeile einfügen
+Dscreen=`tput clear` # Bildschirm löschen
+
+# Bildschirm löschen
+echo $Dscreen
+
+tput cup 9 10
+echo "------------------------------"
+tput cup 10 10
+printf "|%28s|" ""
+tput cup 11 10
+printf "|%5s Ein Teststring %7s|" " " " "
+tput cup 12 10
+printf "|%28s|" ""
+tput cup 13 10
+echo "------------------------------"
+
+# Kurze Pause
+sleep 2
+
+tput cup 11 10
+# Zeile löschen
+echo $Dline
+
+sleep 2
+
+tput cup 11 10
+printf "${Iline}|%7s neuer String %7s|" " " " "
+
+sleep 2
+echo $Dscreen

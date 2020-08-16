@@ -1,0 +1,13 @@
+# Demonstriert eine Umlenkung mit exec
+# aexec1
+
+# Wird noch auf dem Bildschirm ausgegeben
+echo "$0 wird ausgeführt"
+
+exec >ausgabe.txt
+
+# Alle Ausgaben ab hier werden in die Datei "ausgabe.txt" gemacht
+val=`ls -l | wc -l`
+echo "Im Verzeichnis $HOME befinden sich $val Dateien"
+echo "Hier der Inhalt : "
+ls -l

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#Symbole in einem assoziativen Array
+
+# definition des Arrays
+declare -A SYMBOLE
+SYMBOLE[PLAN]='\u2708'
+SYMBOLE[OHM]='\u2126'
+SYMBOLE[TRADEMARK]='\2122'
+SYMBOLE[RADIO]='\u2622'
+SYMBOLE[FEMALE]='\u2640'
+SYMBOLE[MALE]='\u2641'
+SYMBOLE[SNOW]='\u2744'
+#http://unicode-table.com/de/#control-character
+
+#Anwendung der Symole
+echo -e "${SYMBOLE[FEMALE]} und ${SYMBOLE[MALE]} warten auf das ${SYMBOLE[PLAN]}"
+echo -e "Der Wiederstand hat 500 ${SYMBOLE[OHM]}"

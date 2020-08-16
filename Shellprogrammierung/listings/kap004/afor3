@@ -1,0 +1,10 @@
+# Demonstriert die Verwendung von for und der Datei-Substitution
+# afor3
+
+# Gibt alle Textdateien des aktuellen Arbeitsverzeichnis aus
+for datei in *.txt
+do
+   echo $datei
+   [ -r $datei ] && echo "... ist lesbar"
+   [ -w $datei ] && echo "... ist schreibbar"   
+done

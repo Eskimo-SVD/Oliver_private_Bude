@@ -1,0 +1,11 @@
+# Demonstriert die logische UND-Verknüpfung
+# aandtest
+
+file=atestfile.txt
+
+# Eine Datei anlegen
+
+if [ -f $file -a -w $file ]
+then
+   echo "Datei $file ist eine reguläre Datei und Beschreibbar"
+fi

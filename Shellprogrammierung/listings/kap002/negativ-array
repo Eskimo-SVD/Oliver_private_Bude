@@ -1,0 +1,9 @@
+#!/bin/bash
+for i in $(echo {0..5})
+do
+	ZEILE[$i]=Zeile$i
+done
+
+echo Inhalt der zweiten Zeile ${ZEILE[1]}
+echo Inhalt der vorletzte Zeile ${ZEILE[-2]}
+

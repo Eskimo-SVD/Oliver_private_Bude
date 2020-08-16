@@ -1,0 +1,10 @@
+# Demonstriert das Einlesen einzelner Zeichen
+# Name : areadchar2
+
+echo "Bitte eine Taste betätgen"
+
+stty raw -echo
+char=`dd bs=1 count=1 2>/dev/null`
+stty -raw echo
+
+echo "Die Taste war $char"

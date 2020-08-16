@@ -1,0 +1,8 @@
+# Name : aeval
+
+while true
+do
+   printf "Kommando(s) : "
+   read
+   eval $REPLY
+done."

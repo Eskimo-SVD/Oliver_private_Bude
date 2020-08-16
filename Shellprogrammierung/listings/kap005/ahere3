@@ -1,0 +1,8 @@
+# Demonstriert die Verwendung von Here-Dokumenten
+# Name : ahere3
+
+count=`cat <<TEXT_MARKE
+\`ls -l | wc -l\`
+TEXT_MARKE`
+
+echo "Im Verzeichnis $HOME befinden sich $count Dateien"

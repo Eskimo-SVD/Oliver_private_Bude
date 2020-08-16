@@ -1,0 +1,6 @@
+# Demonstriert die Kommando-Substitution
+# Name : asubstit2
+
+echo "Heute ist `date +%A` der `date +%d.%m.%Y`"
+echo "Sie befinden sich in $HOME " \
+     "(Inhalt:`ls -l | wc -l` Dateien)"

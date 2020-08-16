@@ -1,0 +1,34 @@
+#!/bin/sh
+# diffDir() vergleicht zwei Verzeichnisse mit einfachen
+# Dateien miteinander
+ 
+diffDir() {
+   if [ -d "$1" -a -d "$2" ]
+   then :
+   else
+      echo "usage: $0 dir1 dir2"
+      return 1
+   fi
+   
+   count1=0; count2=0 
+   echo
+   echo "Unterschiedliche Dateien : "
+   for i in $1/*
+   do
+      count1=`expr $count1 + 1`
+      base=`basename $i`
+      diff -b $1/$base $2/$base > /dev/null
+      if [ "$?" -gt 0 ]
+      then
+         echo "    $1/$base $2/$base"
+         count2=`expr $count2 + 1`
+      fi
+   done
+   echo "-------------------------------"
+   echo "$count2 von $count1 Dateien sind Unterschiedlich \
+         in $1 und $2"
+   return 0
+}
+
+# Zum Testen ...
+diffDir $1 $2

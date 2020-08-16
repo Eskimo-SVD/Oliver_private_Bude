@@ -1,0 +1,13 @@
+# Demonstriert die Funktion trap zum Abfangen von Signalen
+# Name : trap1
+
+# Signal SIGINT (2) (STRG+C)
+trap 'echo SIGINT erhalten' 2
+
+i=0
+while [ $i -lt 5 ]
+do
+   echo "Bitte nicht stören!"
+   sleep 2
+   i=`expr $i + 1`
+done

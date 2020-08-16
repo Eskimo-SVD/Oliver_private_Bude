@@ -1,0 +1,60 @@
+#!/bin/bash
+
+declare -A ADRESSEN
+
+while [ -z "$DATEI" ]
+do 
+	echo -n "Welche Datei soll verwendet werden : "
+	read DATEI
+done
+if [ ! -f $DATEI ]
+then
+	#oeffnen einer Datei
+	exec 3> $DATEI
+
+	while [ -z $NAME ]
+	do
+		echo -n "Bitte Name eingeben : "
+		read NAME
+		if [ -z "$NAME" ]
+		then
+			break
+		fi
+		echo -n "Bitte Adresse eingeben : "
+		read ADR
+		if [ -z "$ADR" ]
+		then
+			echo "Keine Adresse angegeben"
+			sleep 2
+			continue
+		fi
+		ADRESSEN[$NAME]=$ADR
+		NAME=""
+	done
+	# Schreiben der Adressen in die Datei
+	for i in "${!ADRESSEN[@]}"
+	do
+		echo $i,${ADRESSEN[$i]} >&3
+	done
+	# schliessen der Datei
+	exec 3>&-
+else
+	while read LINE
+	do
+		NAME=$(echo $LINE | cut -d, -f1 )
+		ADR=$(echo $LINE | cut -d, -f2)
+		ADRESSEN[$NAME]=$ADR
+	done < $DATEI
+	while [ -z "$SUCH" ]
+	do
+		echo -n "Bitte zu suchenden Namen eingeben : "
+			read SUCH
+			if [ -z "$SUCH" ]
+			then
+				echo Ende 
+				exit 0
+			fi	
+		echo  Adresse von $SUCH ist ${ADRESSEN[${SUCH}]}
+		SUCH=""
+	done
+fi

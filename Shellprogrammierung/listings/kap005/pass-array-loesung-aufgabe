@@ -1,0 +1,21 @@
+#!/bin/bash
+declare -A BENUTZER
+
+while read ZEILE
+do
+	USERNAME=$(echo $ZEILE | cut -d: -f1 )
+  USERID=$(echo $ZEILE | cut -d: -f3 )
+	BENUTZER[$USERNAME]=$USERID
+done < /etc/passwd
+printf "|%20s|%10s|\n" Username UserID
+echo -n "|"
+for (( s=0; s <=30; s++))
+do
+	echo -n "-"
+done	
+echo "|"
+for i in "${!BENUTZER[@]}"
+do
+	printf "|%20s|%10s|\n" $i ${BENUTZER[$i]}
+done
+

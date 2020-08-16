@@ -1,0 +1,10 @@
+# Demonstriert das schreiben mehrerer Zeile in eine Named Pipe
+# awritepipe
+
+while true
+do
+   echo "Ein paar Zeilen für die Named Pipe"
+   echo "Die zweite Zeile soll auch ankommen"
+   echo "Und noch eine letzte Zeile"
+   break
+done > apipe

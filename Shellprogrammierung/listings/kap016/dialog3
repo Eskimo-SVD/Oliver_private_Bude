@@ -1,0 +1,21 @@
+# Demonstriert dialog --msgbox
+# Name : dialog3
+
+dialog --yesno "Möhten Sie wirklich alles Löschen?" 0 0
+# 0=ja; 1=nein
+antwort=$?
+# Dialog-Bildschirm löschen
+dialog --clear
+
+# Ausgabe auf die Konsole
+if [ $antwort = 0 ]
+then
+   dialog --infobox "Dieser Vorgang kann ein wenig dauern" 5 50
+   # Hier die Kommandos zur Ausführung zum Löschen
+   sleep 5           # ... wir warten einfach 5 Sekunden
+   dialog --clear    # Dialog-Bildschirm löschen
+   dialog --msgbox "Done! Alle Löschvorgänge ausgeführt" 5 50
+fi
+
+# Bildschirm löschen
+clear

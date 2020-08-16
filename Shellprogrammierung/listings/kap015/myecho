@@ -1,0 +1,12 @@
+#!/bin/sh
+# myecho() : Portables echo ohne Zeilenumbruch
+
+myecho() {
+   # Weg mit dem Newline, falls vorhanden
+   echo "$*" | tr -d '\n'
+}
+
+# Zum Testen ...
+#
+myecho "Eingabe machen : "
+read eingabe

@@ -1,0 +1,137 @@
+#!/bin/sh
+# Name: psusers
+
+# Voraussetzung dass diese Script funktioniert, ist, dass die
+# Ausgabe von ps -ef auf Ihrem Rechner folgendes Format hat:
+#
+# you@host > ps -ef
+# UID        PID  PPID  C STIME TTY          TIME CMD
+# root         1     0  0 00:38 ?        00:00:04 init [5]
+# root         2     1  0 00:38 ?        00:00:00 [ksoftirqd/0]
+#
+# Wenn die Ausgabe bei Ihnen etwas anders aussieht, müssen Sie 
+# das Script entsprechend anpassen (erste Zuweisung von USERNAME 
+# und PROGNAME)
+
+# Variablen deklarieren
+# 
+COUNTER=0; CHECKER=0; UCOUNT=1
+PSPROG='/bin/ps -ef'
+SORTPROG='/bin/sort +0 -1 +7 -8'
+TMPFILE=/tmp/proclist_$$
+
+# Beim ordentlichen Beenden TMPFILE wieder löschen
+trap "/bin/rm -f $TMPFILE" EXIT
+
+# Die aktuelle Prozessliste in TMPFILE speichern
+# 
+$PSPROG | $SORTPROG > $TMPFILE
+
+# Daten in TMPFILE verarbeiten
+# 
+grep -v 'UID[  ]*PID' $TMPFILE | while read LINE
+do
+   # Zeilen in einzelne Felder aufbrechen
+   set -- $LINE
+   # Einzelne Felder der Ausgabe von ps -ef lauten:
+   # UID PID PPID C STIME TTY TIME CMD
+
+   # Anzahl der Parameter einer Zeile größer als 0 ...
+   if [ $# -gt 0 ] 
+   then
+      # Erstes Feld (UID) einer Zeile der Variablen 
+      # USERNAME zuordnen
+      USERNAME=$1
+      # Die ersten sieben Felder einer Zeile entfernen
+      shift 7
+      # Kommandonamen (CMD) der Variablen PROGNAME zuordnen
+      PROGNAME=$*
+   fi
+
+   # Testet die Kopfzeile
+   # 
+   if [ "$USERNAME" = "UID" ]
+   then
+      continue # nächsten Wert in der Schleife holen ...
+   fi
+
+   # Überprüfen, ob es sich um die erste Zeile von Daten handelt
+   # 
+   if [ "$CHECKER" = "0" ]
+   then
+      CHECKER=1
+      UCOUNT=0
+      LASTUSERNAME="$USERNAME"
+      # Programmname für die Ausgabe formatieren
+      # auf 40 Zeichen beschränken ....
+      # 
+      LASTPROGNAME=`echo $PROGNAME | \
+                    awk '{print substr($0, 0, 40)}'`
+      COUNTER=1; LASTCOUNT=1
+      echo ""
+      echo "$USERNAME führt aus:....."
+      continue # nächsten Wert von USERNAME holen
+   fi
+
+   # Logische Überprüfung durchführen
+   # 
+   if [ $CHECKER -gt 0 -a "$USERNAME" = "$LASTUSERNAME" ]
+   then
+      if [ "$PROGNAME" = "$LASTPROGNAME" ]
+         then
+            COUNTER=`expr $COUNTER + 1`
+         else
+         # Ausgabe auf dem Bildschirm ...
+         if [ $LASTCOUNT -gt 1 ]
+         then
+            echo "     $LASTCOUNT Instanz(en) von ->"\
+                 " $LASTPROGNAME"
+         else
+            echo "         $LASTCOUNT Instanz(en) von ->"\
+                 " $LASTPROGNAME"
+         fi
+         COUNTER=1
+      fi
+      # Programmname für die Ausgabe formatieren
+      # auf 40 Zeichen beschränken ....
+      #
+      LASTPROGNAME=`echo $PROGNAME | \
+                    awk '{print substr($0, 0, 40)}'`
+      LASTCOUNT=$COUNTER
+   elif [ $CHECKER -gt 0 -a "$USERNAME" != "$LASTUSERNAME" ]
+   then
+      if [ $LASTCOUNT -gt 1 ]
+      then
+         echo "     $LASTCOUNT Instanz(en) von >> $LASTPROGNAME"
+      else
+         echo "         $LASTCOUNT Instanz(en) von >>"\
+              " $LASTPROGNAME"
+      fi
+      echo
+      echo "$USERNAME führt aus:....."
+      LASTUSERNAME="$USERNAME"
+      # Programmname für die Ausgabe formatieren
+      # auf 40 Zeichen beschränken ....
+      #
+      LASTPROGNAME=`echo $PROGNAME | \
+                    awk '{print substr($0, 0, 40)}'`
+      COUNTER=1
+      LASTCOUNT=$COUNTER
+   fi
+done
+
+# DISPLAY THE FINAL USER INSTANCE DETAILS
+#
+if [ $COUNTER -eq 1 -a $LASTCOUNT -ge 1 ]
+then
+   if [ $LASTCOUNT -gt 1 ]
+   then
+      echo "     $LASTCOUNT Instanz(en) von >> $LASTPROGNAME"
+   else
+      echo "         $LASTCOUNT Instanz(en) von >> $LASTPROGNAME"
+   fi
+fi
+
+echo "------"
+echo "Fertig"
+echo "------"

@@ -1,0 +1,23 @@
+# Demonstriert die Verwendung von Parametern
+# Name : afunc5
+
+# Funktion readarg
+readarg() {
+   i=1
+   
+   echo "Anzahl der Parameter, der übergeben wurden : $#"
+   
+   for var in $*
+   do
+      echo "$i. Parameter : $var"
+      i=`expr $i + 1`
+   done
+   
+   # Oder via Positionsparameter; die ersten drei
+   echo $1:$2:$3
+}
+
+# Hauptprogramm
+printf "Ein paar Argumente bitte : "
+read
+readarg $REPLY

@@ -1,0 +1,16 @@
+# Demonstriert die Verwendung von Parametern
+# Name : afunc17
+
+# Globale Variable
+var="ich bin global"
+
+# Funktion localtest
+localtest() {
+   local var="ich bin local"
+   echo $var
+}
+
+# Hauptfunktion
+echo $var
+localtest
+echo $var

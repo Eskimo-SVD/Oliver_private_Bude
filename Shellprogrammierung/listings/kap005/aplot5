@@ -1,0 +1,14 @@
+# Demonstriert einen Plot mit gnuplot und dem Here-Dokument
+# Name : aplot5
+
+FILE=data.dat
+
+gnuplot -persist <<PLOT
+set view ,75,1,1
+set xlabel "Woche"
+set ylabel "Monat"
+set zlabel "Besucher"
+set ymtics
+set title "Besucherstatistik pro Woche eines Monats"
+splot "$FILE" using (column(1)+.3):2:3 t "Besucher pro Woche" with impuls linewidth 3
+PLOT

@@ -1,0 +1,7 @@
+# Name : aunboundvar
+
+# Keine undefnierten Variablen zulassen
+set –u
+
+var1=100
+echo $var1 $var2

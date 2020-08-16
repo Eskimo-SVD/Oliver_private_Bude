@@ -1,0 +1,9 @@
+# Name : abasedir
+
+echo "Scriptname : $0"
+echo "basename   : `basename $0`"
+echo "dirname    : `dirname $0`"
+
+# ... oder die Endung entfernen
+basename $HOME/Kap005graf.zip .zip
+basename $HOME/meinText.txt .txt

@@ -1,0 +1,14 @@
+# Demonstriert die Verwendung von Parametern
+# Name : afunc12
+
+# Funktion verdoppeln
+verdoppeln_und_halbieren() {
+   val1=`expr $1 \* 2`
+   val2=`expr $1 / 2`
+}
+
+# Hauptprogramm
+verdoppeln_und_halbieren 20
+
+echo "verdoppeln 20 = $val1"
+echo "halbieren  20 = $val2"

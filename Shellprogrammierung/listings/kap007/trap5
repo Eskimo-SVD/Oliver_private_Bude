@@ -1,0 +1,23 @@
+# Demonstriert die Funktion trap zum Abfangen von Signalen
+# Name : trap5
+
+# Signal SIGHUP empfangen
+trap 'readconfig' 1
+
+readconfig() {
+   . aconfigfile
+}
+
+a=1
+b=2
+c=3
+
+# Endlosschleife
+while [ 1 ]
+do
+   echo "Werte (PID:$$)"
+   echo "a=$a"
+   echo "b=$b"
+   echo "c=$c"
+   sleep 5
+done

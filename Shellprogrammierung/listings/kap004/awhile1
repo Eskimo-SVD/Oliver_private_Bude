@@ -1,0 +1,37 @@
+# Demonstriert die Verwendung einer while Schleife
+# awhile1
+
+[ $# -lt 1 ] && echo "Mindestens ein Argument" && exit 1
+
+# Liste von Argumenten in einem Array speichern
+# Version : Korn-Shell (auskommentiert)
+#set -A array $*
+
+# Version : bash
+array=( $* )
+
+i=0
+while [ $i -lt $# ]
+do
+   echo "Argument $i ist ${array[$i]}"
+   i=`expr $i + 1`
+done
+
+# Countdown
+i=5
+while [ $i -gt 0 ]
+do
+   echo $i
+   sleep 1          # Eine Sekunden anhalten
+   i=`expr $i - 1`
+done
+
+echo "...go"
+
+# Auch andere arithmetische Ausdrücke als Zähler möglich
+i=100
+while [ $i -gt 0 ]
+do 
+   echo $i
+   i=`expr $i / 2`
+done

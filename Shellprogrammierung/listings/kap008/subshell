@@ -1,0 +1,18 @@
+# Name : subshell
+
+a=1
+b=2
+c=3
+
+echo "Im Script: a=$a; b=$b; c=$c"
+
+# Ein Subshell starten
+(
+   echo "Subshell : a=$a; b=$b; c=$c"
+   # Werte verändern
+   a=3 ; b=6 ; c=9
+   echo "Subshell : a=$a; b=$b; c=$c"
+)
+
+# Nach der Subshell wieder ...
+echo "Im Script: a=$a; b=$b; c=$c"

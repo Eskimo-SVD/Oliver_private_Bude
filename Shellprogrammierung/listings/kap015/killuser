@@ -1,0 +1,90 @@
+#!/bin/ksh
+# Name: killuser
+# Wegen der Benutzung von Arrays "nur" für bash und Korn-Shell
+# nicht aber für Bourne-Shell (sh) geeignet
+
+while true
+do
+   # Bildschirm löschen
+   clear 
+
+   echo "Dieses Script erlaubt Ihnen bestimmte Benutzerprozesse "
+   echo "zu beenden."
+   echo
+   echo "Name des Benutzers eingeben (mit q beenden) : " | \
+       tr -d '\n'
+   read unam
+   # Wurde kein Benutzer angegeben
+   unam=${unam:-null_value}
+   export unam
+   
+   case $unam in
+      null_value)
+         echo "Bitte einen Namen eingeben!" ;;
+      [Qq])
+         exit 0 ;;
+      root)
+         echo "Benutzer 'root' ist nicht erlaubt!" ;;
+      *)
+         echo "Überprüfe $unam ..."
+         typeset -i x=0
+         typeset -i n=0
+         if $(ps -ef | grep "^[  ]*$unam" > /dev/null)
+         then
+         for a in $(ps -ef | 
+            awk -v unam="$unam" '$1 ~ unam { print $2, $8}'| \
+            sort -nr +1 -2 ) 
+         do
+         if [ $n -eq 0 ]
+         then
+            x=`expr $x + 1`
+            var[$x]=$a
+            n=1
+         elif [ $n -eq 1 ]
+         then
+            var2[$x]=$a
+            n=0
+         fi
+        done
+        if [ $x -eq 0 ]
+        then
+           echo "Hier gibt es keine Prozesse zum beenden!"
+        else
+           typeset -i y=1
+           clear
+           while [ $y -le $x ]
+           do
+              echo "Prozess beenden PID: ${var[$y]} -> CMD: "\
+                   " ${var2[$y]}  (J/N) : " | tr -d '\n'
+              read resp
+              case "$resp" in 
+                 [Jj]*) 
+                    echo "Prozess wird beendet ..."
+                    # Zuerst versuchen "normal" zu beenden 
+                    echo "Versuche normal zu beenden " \
+                         " (15=SIGTERM)"
+                    kill -15 ${var[$y]} 2>/dev/null
+                    # Überprüfen obs geklappt hat -> ansonsten
+                    # mit dem Hammmer killen
+                    if ps -p ${var[$y]} >/dev/null 2>&1
+                    then
+                       echo "Versuche 'brutal' zu beenden"\
+                            " (9=SIGKILL)"
+                       kill -9 ${var[$y]} 2>/dev/null
+                    fi
+                    ;;
+                 *)
+                    echo "Prozess wird weiter ausgeführt"\
+                         " ( ${var2[y]} )"
+                    ;;
+              esac
+
+              y=`expr $y + 1`
+              echo
+           done
+           fi
+        fi
+        ;;
+     esac
+sleep 2
+done

@@ -1,0 +1,39 @@
+# Demonstriert einfache Zeichenkettenvergleiche
+# ateststring
+
+name1=juergen
+name2=jonathan
+
+if [ $# -lt 1 ]
+then
+   echo "Hier ist mindestens ein Argumente erforderlich"
+   echo "usage: $0 Zeichenkette"
+   exit 1
+fi
+
+if [ "$1" = "$name1" ]
+then
+   echo "Hallo juergen"
+elif [ "$1" = "$name2" ]
+then 
+   echo "Hallo jonathan"
+else
+   echo "Hier wurde weder $name1 noch $name2 verwendet"
+fi
+
+if [ -n "$2" ]
+then
+   echo "Hier wurde auch ein zweites Argument verwendet ($2)"
+else
+   echo "Hier wurde kein zweites Argument verwendet"
+fi
+
+if [ -z "$name3" ]
+then
+   echo "Der String \$name3 ist leer oder existiert nicht"
+elif [ "$name3" != "you" ]
+then
+   echo "Bei \$name3 handelt es sich nicht um \"you\""
+else
+   echo "Hier ist doch \"you\" gemeint"
+fi

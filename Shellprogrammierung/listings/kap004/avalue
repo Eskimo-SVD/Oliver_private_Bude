@@ -1,0 +1,31 @@
+# Demonstriert das test-Kommando mit Zahlenwerten
+# Name : avalue
+
+a=6; b=7
+
+if [ $a -eq $b ]
+then
+   echo "\$a ($a) ist gleich wie \$b ($b)"
+else
+   echo "\$a ($a) ist nicht gleich mit \$b ($b)"
+fi
+
+if [ $a -gt $b ]
+then
+   echo "\$a ($a) ist größer als \$b ($b)"
+elif [ $a -lt $b ]
+then
+   echo "\$a ($a) ist kleiner als \$b ($b)"
+else
+   echo "\$a ($a) ist gleich wie \$b ($b)"
+fi
+
+if [ $a -ne 5 ]
+then
+   echo "\$a ($a) ist ungleich 5"
+fi
+
+if [ 7 -eq $b ]
+then
+   echo "\$b ist gleich 7"
+fi

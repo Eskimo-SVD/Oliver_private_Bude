@@ -1,0 +1,8 @@
+# Name : readfield
+
+printf "Welche Datei wollen Sie verwenden : "
+read datei
+printf "Welches Feld wollen Sie hierbei ermitteln : "
+read feld
+
+awk '{ print $'$feld' }' $datei

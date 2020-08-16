@@ -1,0 +1,16 @@
+# Demonstriert die Verwendung von Parametern
+# Name : afunc13
+
+# Funktion usage
+usage() {
+   if [ $# -lt 1 ]
+   then
+      echo "usage: $0 datei_zum_lesen"
+   exit 1
+   fi
+}
+
+# Hauptprogramm
+echo "Vor der Funktion ..."
+usage $*
+echo "... nach der Funktion"

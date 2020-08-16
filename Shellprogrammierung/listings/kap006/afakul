@@ -1,0 +1,12 @@
+# Demonstriert die Verwendung von Rekursionen
+# Name : afakul
+
+fakul() {
+   value=$1  # ersts Argument des Funktionsaufruf an value
+   # Wenn value kleiner als 1 den Wert 1 ausgeben und beenden
+   [ $((value)) -le 1 ] && { echo 1; return; }
+   # Ansonsten mit einem rekursiven Aufruf fortfahren
+   echo $(($value * `fakul $value-1` ))
+}
+ 
+fakul $1 

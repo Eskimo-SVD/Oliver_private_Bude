@@ -1,0 +1,50 @@
+#!/bin/sh
+# Name: readerrorlog
+# Wertet error_log des Apaches aus
+
+# Anzahl der Einträge die pro Kategorie angezeigt werden sollen
+MAXERRORS=10      
+
+# Sortierte Ausgabe von jeweils MAXERRORS pro Fehler
+# ggf. sollte man eine Datei zum zwischenspeichern,
+# anstatt wie hier die Variable ret, verwenden ...
+#
+print_error_log() {
+  ret=`grep "${2}" "$1" | awk '{print $NF}' |\
+    sort | uniq -c | sort -rn | head -$MAXERRORS`
+
+  if [ "$ret" != "" ] ; then
+    echo 
+    echo "[$2] Fehler:"
+    echo "$ret" 
+  fi
+}
+
+if [ $# -ne 1 ]
+then
+   echo "usage $0 error_log"
+   exit 1
+fi
+
+# Anzahl der Einträge in error_log
+echo "'$1' hat `wc -l < $1` Einträge"
+
+# Erster Eintrag in error_log
+dateHead=`grep -E '\[.*:.*:.*\]' "$1" | head -1 | \
+          awk '{print $1" "$2" "$3" "$4" "$5}'`
+# Letzter Eintrag in error_log
+dateTail=`grep -E '\[.*:.*:.*\]' "$1" | tail -1 | \
+          awk '{print $1" "$2" "$3" "$4" "$5}'`
+echo "Einträge vom : $dateHead "
+echo "bis zum      : $dateTail "
+echo
+
+# Wir geben einige Fehler sortiert nach Fehlern aus
+# Die Liste kann beliebig nach Fehlern erweitert werden ...
+#
+print_error_log "$1" "File does not exist"
+print_error_log "$1" "Invalid error redirection directive"
+print_error_log "$1" "premature EOF"
+print_error_log "$1" "script not found or unable to stat"
+print_error_log "$1" "Premature end of script headers"
+print_error_log "$1" "Directory index forbidden by rule"

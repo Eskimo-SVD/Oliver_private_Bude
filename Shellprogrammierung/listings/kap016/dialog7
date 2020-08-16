@@ -1,0 +1,11 @@
+# Demonstriert dialog --checklist
+# Name : dialog7
+
+pizza=`dialog --checklist "Pizza mit ..." 0 0 4 \
+ Käse "" on\
+ Salami "" off\
+ Schinken "" off\
+ Thunfisch "" off 3>&1 1>&2 2>&3`
+dialog --clear
+clear
+echo "Ihre Bestellung: Pizza mit $pizza"

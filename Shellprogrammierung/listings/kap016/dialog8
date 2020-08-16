@@ -1,0 +1,10 @@
+# Demonstriert dialog --radiolist
+# Name : dialog8
+
+pizza=`dialog --radiolist "Pizza mit ..." 0 0 3 \
+  Salami "" off\
+  Schinken "" off\
+  Thunfisch "" off 3>&1 1>&2 2>&3`
+dialog --clear
+clear
+echo "Ihre Bestellung: Pizza mit $pizza"

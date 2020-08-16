@@ -1,0 +1,11 @@
+# Name : dasEnde
+# Befehle die beim Beenden einer Shell ausgeführt werden
+
+cat <<MARKE
+********************************************
+*   Hier könnten noch einige nützliche     *
+*   zur Beendigung der Shell stehen.       *
+********************************************
+MARKE
+echo "Alles Erledigt - Shell mit ENTER beenden"
+read

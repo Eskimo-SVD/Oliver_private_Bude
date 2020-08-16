@@ -1,0 +1,24 @@
+# Demonstriert die Funktion trap zum Abfangen von Signalen
+# Name : trap4
+
+sighandler_INT() {
+   printf "Habe das Signal SIGINT empfangen\n"
+   printf "Soll das Script beendet werden (j/n) : "
+   read
+   if [[ $REPLY = "j" ]]
+   then
+      echo "Bye!"
+      exit 0;
+   fi
+}
+
+# Signale SIGINT abfangen
+trap 'sighandler_INT' 2
+
+i=0
+while [ $i -lt 5 ]
+do
+   echo "Bitte nicht stören! ($$)"
+   sleep 3
+   i=`expr $i + 1`
+done

@@ -1,0 +1,12 @@
+# Überprüft die Anzahl von Argumenten
+# Name : achkarg
+
+# Wurden weniger als zwei Argumente eingegeben?
+if [ $# -lt 2 ]    # lt = lower then
+   then
+   echo "Mindestens zwei Argumente erforderlich ..."
+   echo "$0 arg1 arg2 ... arg_n"
+   exit 1
+fi
+
+echo "Anzahl erforderlicher Argumente erhalten"

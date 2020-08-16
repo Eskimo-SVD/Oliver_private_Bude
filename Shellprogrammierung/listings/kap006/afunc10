@@ -1,0 +1,39 @@
+# Demonstriert die Verwendung von Parametern
+# Name : afunc10
+
+# Funktion verdoppeln
+verdoppeln() {
+   val=`expr $1 \* 2`
+   echo $val
+}
+
+#Funktion halbieren
+halbieren() {
+   val=`expr $1 / 2`
+   echo $val
+}
+
+# Alle Kleinbuchstaben zu Grossbuchstaben
+upper() {
+   echo $string | tr 'a-z' 'A-Z'
+}
+
+# Alle Grossbuchstaben zu Kleinbuchstaben
+lower() {
+   echo $string | tr 'A-Z' 'a-z'
+}
+
+# Hauptprogramm
+
+val=`verdoppeln 25`
+echo "verdoppeln 25 = $val"
+
+# So geht es auch ...
+echo "halbieren  20 = `halbieren 20`"
+
+string="Hallo Welt"
+ustring=`upper $string`
+echo "upper $string = $ustring"
+
+string="Hallo Welt"
+echo "lower $string = `lower $string`"

@@ -1,0 +1,12 @@
+# Demonstriert eine alternative Verzweigung mit else
+# Name : aelse
+
+# Benutzer in /etc/passwd suchen ...
+if grep "^$1" /etc/passwd > /dev/null
+then
+   # grep erfolgreich
+   echo "User $1 ist bekannt auf dem System"
+else
+   # grep erfolglos
+   echo "User $1 gibt es hier nicht"
+fi

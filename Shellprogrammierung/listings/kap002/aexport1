@@ -1,0 +1,9 @@
+# Demonstriert den Umgang export
+# Name : aexport1
+
+wichtig="Noch wichtigere Daten"
+echo "aexport1: $wichtig"
+
+# Variable im Shellscript exportieren
+export wichtig
+./aexport2

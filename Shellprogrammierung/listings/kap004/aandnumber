@@ -1,0 +1,13 @@
+# Demonstriert den UND-Operator
+# aandnumber
+
+number=${1:-"5"}
+
+# Eine Datei anlegen
+
+if [ $number -gt 0 -a $number -lt 11 ]
+then
+   echo "Wert liegt zwischen 1 und 10"
+else
+   echo "Wert liegt nicht zwischen 1 und 10"
+fi

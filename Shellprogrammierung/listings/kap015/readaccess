@@ -1,0 +1,86 @@
+#!/bin/sh
+# readaccess
+# Diese Script analysiert die access_log-Datei des
+# Apache-Webservers mit interessanten Informationen
+
+# mathematische Funktion (Wrapper für bc) ...
+calc() {
+bc -q << EOF
+scale=2
+$*
+quit
+EOF
+}
+
+# Damit verhindern Sie, dass bei der Auswertung der
+# 'Referred Hits' der eigene Domainname berücksichtigt wird.
+host="pronix.de"
+# Anzahl der am meisten besuchten Seiten
+POPULAR=10
+# Anzahl der Referrer Seiten
+REFERRER=10
+
+if [ $# -eq 0 ]
+then
+  echo "Usage: $0 logfile"
+  exit 1
+fi
+
+# Logfile lesbar oder vorhanden ...
+if [ -r "$1" ]
+then :
+else
+  echo "Fehler: Kann Log-Datei '$1' nicht finden...!"
+  exit 1
+fi
+
+# Erster Eintrag im Logfile ...
+dateHead=`head -1 "$1" | awk '{print $4}' | sed 's/\[//'`
+# Letzter Eintrag im Logfile ...
+dateTail=`tail -1 "$1" | awk '{print $4}' | sed 's/\[//'`
+
+echo "Ergebnis der Log-Datei '$1'"
+echo
+echo "  Start Datum : `echo $dateHead | sed 's/:/ um /'`"
+echo "    End Datum : `echo $dateTail | sed 's/:/ um /'`"
+
+# Anzahl Besucher, einfach mit wc zählen
+hits=`wc -l < "$1" | sed 's/[^[:digit:]]//g'`
+echo "        Hits  : $hits (Zugriffe insgesamt)"
+
+# Seitenzugriffe ohne den Dateien .txt; .gif; .jpg und .png
+pages=`grep -ivE '(.txt|.gif|.jpg|.png)' "$1" | wc -l | \
+       sed 's/[^[:digit:]]//g'`
+echo "Seitenzugriffe: $pages (Zugriffe ohne Grafiken"\
+     " (jpg, gif, png und txt)"
+
+# Datentransfer - Traffic
+totalbytes=`awk '{sum+=$10} END {print sum}' "$1"`
+echo -n " Übertragen   : $totalbytes Bytes "
+
+# Anzahl Bytes in einem GB = 1073741824  
+# Anzahl Bytes in einem MB = 1048576
+if [ $totalbytes -gt 1073741824 ] ; then
+   ret=`calc "$totalbytes / 1073741824"`
+   echo "($ret GB)"
+elif [ $totalbytes -gt 1048576 ] ; then
+   ret=`calc "$totalbytes / 1048576"`
+   echo "($ret MB)"
+else
+  echo
+fi
+
+# Interessante Statistiken
+echo 
+echo "Die $POPULAR beliebtesten Seiten sind " \
+     " (ohne gif, jpg, png, css, ico und js):"
+awk '{print $7}' "$1" | \
+  grep -ivE '(.gif|.jpg|.png|.css|.ico|.js)' | \
+  sed 's/\/$//g' | sort | \
+  uniq -c | sort -rn | head -$POPULAR
+
+echo
+echo "Woher kamen die Besucher ($REFERRER besten URLs'):"
+awk '{print $11}' "$1" | \
+  grep -vE "(^\"-\"$|/www.$host|/$host)" | \
+  sort | uniq -c | sort -rn | head -$REFERRER

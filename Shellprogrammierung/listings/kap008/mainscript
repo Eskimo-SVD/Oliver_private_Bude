@@ -1,0 +1,27 @@
+# Name : mainscript
+
+FILE=tmpfile.tmp
+rm $FILE
+touch $FILE
+
+while true
+do
+  # Ist die Datei lesbar
+  if [ -r $FILE ]
+  then
+     echo "Datei wird gelesen ..."
+     sleep 1
+     #./script_zum_lesen
+     # Freigeben zum schreiben
+     chmod 0200 $FILE;
+  fi
+  if [ -w $FILE ]
+  then 
+     echo "Datei ist bereit zum schreiben ..."
+     sleep 1
+     #./script_zum_schreiben
+     # Freigeben zum lesen
+     chmod 0400 $FILE
+  fi
+  sleep 1 
+done

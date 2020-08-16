@@ -1,0 +1,7 @@
+# Demonstriert das Lesen mehrere Zeilen aus einer Named Pipe
+# areadpipe
+
+while read zeile
+do
+   echo $zeile
+done < apipe

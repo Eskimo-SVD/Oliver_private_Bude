@@ -1,0 +1,18 @@
+# Demonstriert die Verwendung von read mit Arrays
+# Name : ararray
+
+typeset -i i=0
+while [ $i -lt 5 ]
+do
+   printf "Eingabe machen : "
+   read valarr[$i]
+   i=i+1
+done
+
+echo "Hier, die Eingaben ..."
+i=0
+while [ $i -lt 5 ]
+do
+   echo ${valarr[$i]}
+   i=i+1
+done

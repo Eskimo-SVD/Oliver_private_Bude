@@ -1,0 +1,9 @@
+# Eine nicht definierte Variable wird verwendet
+# Name : aerror
+
+# var1 wird die Zeichenfolge 100 zugewiesen
+var1=100
+# var2 bekommt denselben Wert wie var1
+var2=$var1
+# var3 wurde nicht definiert, aber trotzdem verwendet
+echo $var1 $var2 $var3

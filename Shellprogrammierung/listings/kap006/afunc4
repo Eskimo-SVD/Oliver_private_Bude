@@ -1,0 +1,23 @@
+# Demonstriert verschachtelte Funktionsaufrufe
+# Name : afunc4
+
+# Die Funktion func1
+func1() {
+   echo "Ich bin func1 ..."
+}
+
+# Die Funktion func2
+func2() {
+   echo "Ich bin func2 ..."
+}
+
+# Die Funktion func3
+func3() {
+   echo "Ich bin func 3 ..."
+   func1
+   func2
+   echo "func3 ist fertig"
+}
+
+# Das Hauptprogramm
+func3

@@ -1,0 +1,16 @@
+# Demonstriert einen einfachen Funktionsaufruf
+# Name : afunc3
+
+# Die Funktion print_var
+print_var() {
+   echo $var             # test
+   var=ein_neuer_Test    # var bekommt neuen Wert
+}
+
+var=test
+
+echo $var        # test
+print_var        # Funktionsaufruf
+echo $var        # ein_neuer_Test
+unset print_var  # Funktion löschen
+print_var        # Fehler !!!

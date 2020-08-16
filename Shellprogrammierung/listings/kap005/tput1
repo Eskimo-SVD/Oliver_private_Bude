@@ -1,0 +1,11 @@
+# Demonstriert den tput-Befehl
+# tput1
+
+spalten=`tput cols`
+zeilen=`tput lines`
+farben=`tput colors`
+paare=`tput pairs`
+
+echo "Der Typ des Terminals $TERM hat im Augenblick"
+echo " + $spalten Spalten und $zeilen Zeilen"
+echo " + $farben Farben und $paare Farbenpaare"

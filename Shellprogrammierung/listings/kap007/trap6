@@ -1,0 +1,16 @@
+# Demonstriert die Funktion trap zum Abfangen von Signalen
+# Name : trap6
+
+# Signale SIGINT und SIGTERM abfangen
+trap 'break' 2
+
+i=1
+while [ $i -lt 10 ]
+do
+   echo "$i. Schleifendurchlauf"
+   sleep 1
+   i=`expr $i + 1`
+done
+
+echo "Nach dem $i Schleifendurchlauf abgebrochen"
+echo "--- Hinter der Schleife ---"

@@ -1,0 +1,11 @@
+# Demonstriert, wie Sie einen arithmetischen expr-Ausdruck
+# in einer Variablen speichern können
+# Name : aexpr2
+
+var1=100
+var2=50
+
+# Dies wird Kommando-Substitution bezeichnet
+var3=`expr $var1 + $var2`
+
+echo $var3

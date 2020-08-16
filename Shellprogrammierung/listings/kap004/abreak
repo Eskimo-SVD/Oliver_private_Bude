@@ -1,0 +1,16 @@
+# Demonstriert die Verwendung von break
+# abreak
+
+# Durchläuft alle Argumente der Kommandozeile nach 
+# dem Wort "automatik"
+
+for var in "$@"
+do 
+   if [ "$var" = "automatik" ]
+   then
+      echo "Ok, \"$var\" vorhanden ...!" 
+      break
+   fi
+done
+
+# Hier gehts nach einem break weiter ...

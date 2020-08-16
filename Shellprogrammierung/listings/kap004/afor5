@@ -1,0 +1,26 @@
+# Demonstriert die Verwendung von for und der Kommando-Substitution
+# afor5
+
+count=1
+DIR=$HOME/backup_png
+
+# Verzeichnis anlegen
+mkdir $DIR 2>/dev/null
+# Überprüfen ob erfolgreich angelegt oder überhaupt
+# vorhanden, ansonsten Ende
+[ ! -e $DIR ] && exit 1
+
+for datei in `find $HOME -name "*.png" -print 2>/dev/null`
+do
+   #  Wenn Leserecht vorhanden, können wir die Datei kopieren
+   if [ -r $datei ] 
+   then
+      # PNG-Datei ins entsprechende Verzeichnis kopieren
+      # Als Namen bild1.png, bild2.png ... bildn.png verwenden
+      cp $datei $DIR/bild${count}.png
+      # Zähler um eins erhöhen
+      count=`expr $count + 1`
+   fi
+done
+
+echo "$count Bilder erfolgreich nach $DIR kopiert"

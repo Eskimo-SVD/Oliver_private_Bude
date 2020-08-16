@@ -1,0 +1,14 @@
+# Demonstriert die select-Anweisung
+# aselect2
+
+# Ein neues Auswahl-Prompt
+PS3="Ihre Wahl : "
+
+select auswahl in Punkt1 Punkt2 Punkt3 Punkt4 Ende
+do
+   case "$auswahl" in
+      Ende)  echo "Ende"; break ;;
+        "")  echo "Ungültige Auswahl" ;;
+         *)  echo "Sie haben $auswahl gewählt"
+   esac 
+done

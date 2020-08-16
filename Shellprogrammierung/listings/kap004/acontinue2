@@ -1,0 +1,13 @@
+# Demonstriert die Verwendung von continue
+# acontinue2
+
+# Durchläuft alle Argumente der Kommandozeile nach dem Wort "automatik"
+
+for var in "$@"
+do 
+   if [ "$var" != "automatik" ]
+   then
+      continue
+   fi
+   echo "Ok, \"$var\" vorhanden ...!" 
+done

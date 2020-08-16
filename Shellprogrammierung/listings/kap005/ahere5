@@ -1,0 +1,15 @@
+# Demonstriert die Verwendung von Here-Dokumenten und read
+# Name : ahere5
+
+i=1
+
+while read line
+do
+   echo "$i. Zeile : $line"
+   i=`expr $i + 1`
+done <<TEXT
+Eine Zeile
+`date`
+Homeverzeichnis $HOME
+Das Ende
+TEXT

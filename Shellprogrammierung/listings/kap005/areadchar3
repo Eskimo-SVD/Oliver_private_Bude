@@ -1,0 +1,20 @@
+# Demonstriert das Einlesen einzelner Zeichen
+# Name : areadchar3
+
+echo "Bitte eine Taste betätigen"
+./getkey
+ret=$?
+if [ $ret -eq 0 ]
+then
+   echo "Keine Pfeiltaste"
+fi
+
+if [ $ret -eq 10 ]
+then
+   echo "Die Pfeil-nach-oben Taste wars"
+fi
+
+if [ $ret -eq 11 ]
+then
+   echo "Die Pfeil-nach-links Taste wars"
+ fi

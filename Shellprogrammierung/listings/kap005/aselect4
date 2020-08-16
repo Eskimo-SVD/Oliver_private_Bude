@@ -1,0 +1,18 @@
+# Demonstriert die select-Anweisung
+# aselect4
+
+# Ein neues Auswahl-Prompt
+PS3="Bitte wählen : "
+
+select auswahl in A B C Ende
+do
+   case "$auswahl" in
+      Ende)  echo "Ende" ; break ;;
+        "")  echo "$REPLY: Ungültige Auswahl" ;;
+         A)  select auswahla in A1 A2 A3
+             do
+                echo "Auswahl $auswahla"
+             done ;;
+         *)  echo "Ihre Auswahl war : $auswahl" ;;
+   esac 
+done

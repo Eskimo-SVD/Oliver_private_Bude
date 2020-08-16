@@ -1,0 +1,13 @@
+# Demonstriert eine Umlenkung mit exec
+# aexec2
+
+# Alle Eingaben im Script werden hier von data.dat entnommen
+exec <data.dat
+
+printf "%-15s %-15s %-8s\n" "Nachname" "Vorname" "Telefon"
+printf "+%-15s+%-15s+%-8s\n" "--------" "-------" "-------"
+
+while read vorname nachname telefon
+do
+   printf " %-15s  %-15s  %-8d\n" $nachname $vorname $telefon
+done

@@ -1,0 +1,12 @@
+# Demonstriert die case-Anweisung und die 
+# alternativen Vergleichsmuster mit Wildcards
+# acase4
+
+tag=`date +%a`
+
+case "$tag" in
+  Mo|Mon|Do|Thu)   echo "$tag : Backup Datenbank machen" ;;
+  Di|Tue|Fr|Fri)   echo "$tag : Backup Rechner Saurus"   ;;
+  Mi|Wed|Sa|Sat)   echo "$tag : Backup Rechner Home"     ;;
+  *)   echo "So : Sämtliche Backups auf CD-R sichern" ;;
+esac

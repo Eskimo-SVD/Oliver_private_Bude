@@ -1,0 +1,14 @@
+## Demonstriert den Befehl read zum Zeilenweisen Lesen einer Datei
+# Name : areadline2
+
+if [ $# -lt 1 ]
+then
+   echo "usage: $0 datei_zum_lesen"
+   exit 1
+fi
+
+# Argument $1 soll zeilenweise eingelesen werden
+cat $1 | while read variable 
+do
+   echo $variable
+done

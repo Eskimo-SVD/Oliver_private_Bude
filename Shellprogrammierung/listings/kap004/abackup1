@@ -1,0 +1,60 @@
+# Ein einfaches Backupscript
+# Name : abackup1
+
+# Beispiel: ./abackup1 save Verzeichnis
+# Beispiel: ./abackup1 read (backupfile).tar
+
+BACKUPDIR=$HOME/backup
+DIR=$2
+
+if [ $# != 2 ]
+then
+   echo "Hier sind 2 Argumente erforderlich"
+   echo "usage: $0 Option Verzeichnis/Backkupfile"
+   echo
+   echo "Möglich Angaben für Option:"
+   echo "save = Führt Backup vom kompletten Verzeichnis durch"
+   echo "       Verzeichnis wird als zweites Argument angegeben"
+   echo "read = Liest den Inhalt eines Backupfiles"   
+   echo "       Backupfile wird als zweites Argument angegeben"
+   exit 1
+fi
+
+# Falls Verzeichnis für Backup nicht existiert ...
+if ls $BACKUPDIR > /dev/null
+then
+   echo "Backup-Verzeichnis ($BACKUPDIR) existiert"
+elif mkdir $BACKUPDIR > /dev/null
+then 
+   echo "Backup-Verzeichnis angelegt ($BACKUPDIR)"
+else
+   echo "Konnte kein Backup-Verzeichnis anlegen"
+   exit 1
+fi
+
+# Wurde save oder read als erstes Argument verwendet ...
+if [ "$1" = "save" ]
+then
+   set `date`
+   BACKUPFILE="$3$2$6"
+   if tar czvf ${BACKUPDIR}/${BACKUPFILE}.tar $DIR
+   then
+      echo "Backup für $DIR erfolgreich in $BACKUPDIR angelegt"
+      echo "Backup-Name : ${BACKUPFILE}.tar"
+   else
+      echo "Backup wurde nicht durchgeführt !!!"
+   fi
+elif [ "$1" = "read" ]
+then
+   echo "Inhalt von $DIR : "
+   tar tzf $DIR
+else
+   echo "Falsche Scriptausführung!!!"
+   echo "usage: $0 option Verzeichnis/Backkupfile"
+   echo
+   echo "Möglich Angaben für Option:"
+   echo "save = Führt ein Backup eines kompletten Verzeichnis durch"
+   echo "       Verzeichnis wird als zweites Argument angegeben"
+   echo "read = Liest den Inhalt eines Backupfiles"   
+   echo "       Backupfile wird als zweites Argument angegeben"
+fi

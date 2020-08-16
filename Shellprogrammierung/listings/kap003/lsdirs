@@ -1,0 +1,6 @@
+# Vorgabewerte setzen
+# Name : lsdirs
+
+directory=${1:-`pwd`}
+
+ls -ld $directory | grep ^d

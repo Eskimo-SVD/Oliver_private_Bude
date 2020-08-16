@@ -1,0 +1,5 @@
+# Beachtet alle Argumente der Kommandozeile
+# Name : aargumstr
+
+echo "Scriptname               : $0"
+echo "Die restlichen Argumente : $*"

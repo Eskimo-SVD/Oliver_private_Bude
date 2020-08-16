@@ -1,0 +1,12 @@
+# Demonstriert den printf-Befehl
+# aprintf1
+
+FILE=bestellung.txt
+TRENNER=::
+
+for data in `cat $FILE`
+do
+   kunde=`echo $data | tr $TRENNER ' '`
+   set $kunde
+   printf "Kunde: %-10s Anzahl: %-5d Gegenstand: %15s\n" $1 $2 $3
+done

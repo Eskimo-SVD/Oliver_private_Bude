@@ -1,0 +1,6 @@
+# Name : ascript
+
+echo "Das Script wird gestartet ..."
+printf "Warte auf Eingabe: "
+read input
+echo "Script ist fertig ..."

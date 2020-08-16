@@ -1,0 +1,24 @@
+# Demonstriert die Verwendung von IFS
+# Name : aifs3
+
+# IFS sichern
+BACKIFS="$IFS"
+# Minuszeichen als Trenner
+IFS=:
+
+if [ $# -lt 1 ]
+then
+   echo "usage: $0 User"
+   exit 1
+fi
+
+# Ausgabe anhand von Trennzeichen in IFS auftrennen
+set `grep ^$1 /etc/passwd`
+
+echo "User             : $1"
+echo "User-Nummer      : $3"
+echo "Gruppen-Nummer   : $4"
+echo "Home-Verzeichnis : $6"
+echo "Start-Shell      : $7" 
+
+IFS=$BACKIFS

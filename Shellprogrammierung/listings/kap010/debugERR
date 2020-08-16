@@ -1,0 +1,14 @@
+# Name : debugERR
+
+error_handling() {
+   echo "Fehler: $ERRNO Zeile: $LINENO"
+   printf "Beenden (j/n) : " ; read
+   [ "$REPLY" = "j" ] && exit 1
+}
+
+trap 'error_handling' ERR
+
+echo "Testen des ERR-Signals"
+# Sollte dem normalen Benutzer untersagt sein
+cat > /etc/profile
+echo "Nach dem Testen des ERR-Signals"

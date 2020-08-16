@@ -1,0 +1,12 @@
+# Demonstriert die Verwendung einer while Schleife mit Benutzereingabe
+# awhile2
+
+while [ "$input" != "ende" ]
+do
+  # eventuell Befehle zum Abarbeiten hierhin ...
+  
+  echo "Weiter mit ENTER oder Aufhören mit ende"
+  read input  
+done
+
+echo "Das Ende ist erreicht"

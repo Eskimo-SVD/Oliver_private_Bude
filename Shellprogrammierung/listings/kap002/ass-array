@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#Deklaration des assoziativen Arrays
+declare -A NAME
+
+#Zuweisung von VorNAMEn an den NachNAMEn
+NAME[Tau]=Pan
+NAME[Kater]=Tom
+NAME[Pan]=Peter
+NAME[Wolf]=Jürgen
+NAME[Kania]=Stefan
+
+echo Der Vorname von Wolf ist ${NAME[Wolf]}
+
+#Liste aller Schlüssel
+echo "Schlüssel: ${!NAME[@]}"
+
+#Ausgabe aller Werte
+echo "Werte: ${NAME[@]}"
+
+

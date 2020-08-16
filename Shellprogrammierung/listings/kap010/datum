@@ -1,0 +1,7 @@
+# Name : datum
+
+# Trace-Modus einschalten
+set -x
+
+datum=`date`
+echo "Heute ist $datum"

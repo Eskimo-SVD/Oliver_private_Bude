@@ -1,0 +1,12 @@
+# Demonstriert die case-Anweisung zum Auswerten von
+# Optionen mit getopts
+# acase8
+
+while getopts tThH opt 2>/dev/null
+do
+   case $opt in
+       t|T) echo "Option test";;
+       h|H) echo "Option hilfe";;
+       ?) echo "($0): Ein Fehler bei der Optionsangabe"
+   esac
+done 

@@ -1,0 +1,19 @@
+# Name : acut
+
+var1="1234567890"
+var2="/home/you/Dokuments/shell/kapitel2.txt"
+
+pfad=${var2%/*}
+file=${var2##*/}
+
+echo "Komplette Angabe: $var2"
+echo "Pfad            : $pfad"
+echo "Datei           : $file"
+
+# rechts 2 Zeichen abschneiden
+echo ${var1%??}
+# links 2 Zeichen abschneiden
+echo ${var1#??}
+
+# im Klartext ohne Metazeichen
+echo ${var2%/kapitel2.txt}

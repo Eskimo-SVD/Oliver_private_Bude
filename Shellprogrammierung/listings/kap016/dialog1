@@ -1,0 +1,16 @@
+# Demonstriert dialog --yesno
+# Name : dialog1
+
+dialog --yesno "Möchten Sie wirklich abbrechen?" 0 0
+# 0=ja; 1=nein
+antwort=$?
+# Bildschirm löschen
+clear
+
+# Ausgabe auf die Konsole
+if [ $antwort = 0 ]
+then
+   echo "Die Antwort war JA."
+else
+   echo "Die Antwort war NEIN."
+fi

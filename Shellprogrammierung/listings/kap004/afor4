@@ -1,0 +1,12 @@
+# Demonstriert die Verwendung von for und der Datei-Substitution
+# afor4
+
+# Bei Erfolgloser Suche, soll ein entsprechender Hinweis
+# ausgegeben werden
+for datei in *.jpg
+do
+   case "$datei" in
+      *.jpg)   echo "Keine Datei zum Muster *.jpg vorhanden" ;;
+      *)       echo $datei ;;
+   esac
+done

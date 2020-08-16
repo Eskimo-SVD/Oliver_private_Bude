@@ -1,0 +1,16 @@
+# Demonstriert eine test-Verzweigung mit if
+# Name : aif2
+
+# Benutzer in /etc/passwd suchen ...
+grep "^$1" /etc/passwd > /dev/null
+
+# Ist der Exit-Status in $? nicht gleich (not equal) 0 ...
+if [ $? -ne 0 ]
+   then
+   echo "Die Ausführung von grep ist fehlgeschlagen"
+   echo "Vermutlich existert User $1 hier nicht"
+   exit 1  # Erfolglos beenden
+fi
+
+# grep erfolgreich
+echo "User $1 ist bekannt auf dem System"

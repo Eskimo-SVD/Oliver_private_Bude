@@ -1,0 +1,15 @@
+# Demonstriert die Verwendung von for und den Arrays
+# afor7
+
+# Liste von Werten in einem Array speichern
+# Version : Korn-Shell (auskommentiert)
+#set -A array 1 2 3 4 5 6 7 8 9
+
+# Version : bash
+array=( 1 2 3 4 5 6 7 8 9 )
+
+# Alle Elemente im Array durchlaufen
+for value in ${array[*]}
+do
+   echo $value
+done

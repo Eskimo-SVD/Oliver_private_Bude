@@ -1,0 +1,31 @@
+#! /bin/sh
+# Name: loguser
+# Das Script überprüft ob sich jemand im System eingeloggt hat
+
+# Pseudonym für das akutellen Terminal
+outdev=/dev/tty 
+fcount=0; newcount=0; timer=30; displaylines=0
+
+# Die Anzahl Zeilen vom last-Kommando zählen
+fcount=`last | wc -l`
+
+while true
+do
+   # Erneut die Anzahl zeilen vom last-Kommando zählen ...
+   newcount=`last | wc -l`
+   # ... und vergleichen, ob Neue hinzugekommen sind
+   if [ $newcount -gt $fcount ]
+   then
+      # Wieviel neue Zeilen sind hinzugekommen ...
+      displaylines=`expr $newcount - $fcount`
+      # Entsprechend neue Zeilen ausgeben auf outdev
+      # Hier würde sich auch eine Datei oder das Kommando
+      # write sehr gut eignen, damit die Kommandozeile
+      # nicht blockiert wird ...
+      last | head -$displaylines > $outdev
+      # neuen Wert an fcount zuweisen
+      fcount=$newcount
+      # timer Sekunden warten, bis zur nächsten Überprüfung
+      sleep $timer
+   fi
+done

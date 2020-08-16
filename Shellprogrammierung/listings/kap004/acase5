@@ -1,0 +1,11 @@
+# Demonstriert die case-Anweisung mit Wildcards
+# acase5
+
+# Als erstes Argument angeben
+case "$1" in
+   [jJ] )            echo "Ja!"    ;;
+   [jJ][aA])         echo "Ja!"    ;;
+   [nN])             echo "Nein!"  ;;
+   [nN][eE][iI][nN]) echo "Nein!"  ;;
+   *)                echo "Usage $0 [ja] [nein]" ;;
+esac

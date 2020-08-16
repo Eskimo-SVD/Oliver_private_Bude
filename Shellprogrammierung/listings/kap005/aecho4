@@ -1,0 +1,10 @@
+# Demonstriert den echo-Befehl
+# aecho4
+
+echo "Mehrere Newline-Zeichen\n\n\n"
+echo "Tab1\tTab2\tEnde"
+echo "bach\bk"
+# Alternativ für die bash mit Option -e
+# echo -e "Mehrere Newline-Zeichen\n\n"
+# echo -e "Tab1\tTab2\tEnde"
+# echo -e "bach\bk"

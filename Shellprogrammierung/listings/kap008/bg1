@@ -1,0 +1,5 @@
+# Name bg1
+
+printf "Eingabe machen : "
+read
+echo "Ihre Eingabe lautet $REPLY"

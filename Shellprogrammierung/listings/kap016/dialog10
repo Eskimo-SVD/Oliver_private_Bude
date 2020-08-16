@@ -1,0 +1,35 @@
+# Demonstriert dialog 
+# Name : dialog10
+
+myfind=`dialog --menu \
+ "Suchen nach Dateien - Suchkriterium auswählen" 0 0 0 \
+ "Dateinamen" "" \
+ "Benutzerkennung" "" \
+ "Grösse" "" \
+ "Zugriffsrechte" "" \
+ "Ende" "" 3>&1 1>&2 2>&3`
+
+dialog --clear
+   
+case "$myfind" in
+   Dateinamen) 
+      search=`dialog --inputbox \
+         "Dateinamen eingeben" 0 0 "" 3>&1 1>&2 2>&3`
+      command="-name $search"   ;;
+   Benutzerkennung)
+      kennung=`dialog --inputbox \
+         "Benutzerkennung eingeben" 0 0 "" 3>&1 1>&2 2>&3`
+      command="-user $kennung"   ;;
+   Grösse)
+      bsize=`dialog --inputbox \ 
+         "Dateigrösse (in block size) eingeben" 0 0 "" \
+         3>&1 1>&2 2>&3`
+      command="-size $bsize"   ;;
+   Zugriffsrechte)
+      permission=`dialog --inputbox \
+         "Zugriffsrechte (oktal) eingeben" 0 0 "" 3>&1 1>&2 2>&3`
+      command="-perm $permission"   ;;
+   Ende) dialog --clear; clear; exit 0    ;;
+esac
+
+find /home $command -print 2>/dev/null

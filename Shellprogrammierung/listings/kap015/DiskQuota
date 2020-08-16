@@ -1,0 +1,45 @@
+#!/bin/sh
+# DiskQuota = Das Tool Analysiert den Plattenplatz-Verbrauch
+# einzelner Benutzer
+
+# Limit der Speicherplatzbenutzung pro User in MB
+maxUsage=100
+# temporäre Log-Datei -> besser wäre in /tmp
+logfile="loghogs.$$"
+# Verzeichnis(se), pro User erfasst werden sollen
+dirs="/home"
+# uid_start: Alle User-ID unter 100 sind gewöhnlich dem root 
+# und anderen Diensten. Echte User beginnen gewöhnlich ab 100
+# oder manchesmal gar ab 1000
+uid_start=99
+# Beim ordentlichen Beenden logfile wieder löschen
+trap "/bin/rm -f $logfile" EXIT
+
+for name in `cut -d: -f1,3 /etc/passwd | \
+             awk -F: '$2 > $uid_start { print $1 }'`
+do
+  echo -n "$name "
+  find $dirs -user $name -xdev -type f -ls | \
+      awk '{ sum += $7 } END { print sum / (1024*1024) }'
+done | awk "\$2 > $maxUsage { print \$0 }" > $logfile
+
+# Wenn vorhanden haben wird einen "Übertreter" 
+# gefunden, ansonsten ...
+if [ ! -s $logfile ]
+then
+  echo "Kein User hat das Limit ${maxUsage}MB überzogen"
+  exit 0
+fi
+
+while read user diskspace
+do
+   cat <<MARKE | mail -s "Achtung Limit überzogen" $user
+Hallo $user,
+Soeben `date "+%Y-%h-%d %H:%M:%S "` wurde festgestellt, dass Sie 
+Ihr Limit von ${maxUsage}MB überzogen haben. Derzeit beträgt Ihr 
+verwendeter Speicher ${diskspace}MB. Bitte beheben Sie den 
+Umstand als bald wie möglich. Vielen Dank für das Verständnis.
+MARKE
+   echo "User $user hat den Account überzogen\
+         (Ist:${diskspace}MB Soll:${maxUsage}MB)"
+done < $logfile

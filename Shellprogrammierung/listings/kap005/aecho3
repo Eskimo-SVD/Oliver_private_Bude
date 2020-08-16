@@ -1,0 +1,5 @@
+# Demonstriert den echo-Befehl
+# aecho3
+
+echo -e "Hier wird das Newline-Zeichen unterdrückt\c"
+echo ":TEST"

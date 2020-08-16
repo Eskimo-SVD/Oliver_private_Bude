@@ -1,0 +1,18 @@
+# Demonstriert den tput-Befehl
+# tput3
+
+Vgruen=`tput setf 2`
+Vblau=`tput setf 1`
+Hschwarz=`tput setb 0`
+Hgrau=`tput setb 7`
+reset=`tput sgr0`
+
+# Farbenpaar Schwarz-Grün erstellen
+Pschwarzgruen=`echo ${Vgruen}${Hschwarz}`
+
+echo  $Pschwarzgruen
+echo "Ein klassischer Fall von Schwarz-Grün"
+echo  ${Vblau}${Hgrau}
+echo "Ein ungewöhnliches Blau-Grau"
+# Alles wieder Rückgängig machen
+echo $reset

@@ -1,0 +1,36 @@
+#!/bin/sh
+# checkInput() : Überprüft das einen richtige Eingabe aus 
+# Alphabetischen und numerischen Zeichen besteht
+
+# Gibt 0 (=OK) zurück, wenn alle Zeichen aus
+# Groß- und Kleinbuchstaben und Zahlen besteht
+# ansonsten wird 1 zurückgegeben.
+#
+checkInput() {
+  if [ -z "$eingabe" ]
+  then
+     echo "Es wurde nichts eingegeben"
+     exit 1
+  fi
+  # Alle unerwünschten Zeichen entfernen ...
+  eingabeTmp="`echo $1 | sed -e 's/[^[:alnum:]]//g'`"
+  # ... und dann vergleichen
+  if [ "$eingabeTmp" != "$eingabe" ]
+  then
+     return 1
+  else
+     return 0
+  fi
+}
+
+# Ein Beispiel zum Testen der Funktion checkInput
+echo -n "Eingabe machen: "
+read eingabe
+
+if ! checkInput "$eingabe"
+then
+   echo "Die Eingabe muss aus Buchstaben und Zahlen bestehen!"
+   exit 1
+else
+   echo "Die Eingabe ist Ok."
+fi

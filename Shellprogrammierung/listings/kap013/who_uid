@@ -1,0 +1,15 @@
+# Name : who_uid
+
+# Argumente vorhanden ... ?
+usage() {
+   if [ $# -lt 1 ]
+   then
+      echo "usage: $0 user"
+      exit 1 
+   fi 
+}
+
+usage $*
+
+uid=`grep $1 /etc/passwd | awk -F: '{ print $3 }'`
+echo "Der User $1 hat die ID $uid"

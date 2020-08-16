@@ -1,0 +1,30 @@
+# Demonstriert die Verwendung von PIPESTATUS in der bash
+# Name : apipestatus
+
+# In /usr/include suchen
+ls -l /usr/include | grep $1 | wc -l 
+
+# kompletten PIPESTATUS in die Variable STATUS legen
+STATUS=${PIPESTATUS[*]}
+
+# Die Variable STATUS auf die einzelnen
+# Positionsparameter aufteilen
+set $STATUS
+
+# Status einzeln zurück geben
+echo "ls    : $1"
+echo "grep  : $2"
+echo "wc    : $3"
+
+# Fehlerüberprüfungen der einzelnen Werte ...
+if [ $1 -ne 0 ]; then
+  echo "Fehler bei ls" >&2
+fi
+
+if [ $2 -ne 0 ]; then
+  echo "Fehler bei grep" >&2
+fi
+
+if [ $3 -ne 0 ]; then
+  echo "Fehler bei wc" >&2
+fi

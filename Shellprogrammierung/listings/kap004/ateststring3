@@ -1,0 +1,28 @@
+# Demonstriert erweiterte Zeichenkettenvergleiche
+# ateststring3
+
+var1=aaa
+var2=aab
+var3=aaaa
+var4=b
+
+if [[ "$var1" > "$var2" ]]
+then
+   echo "$var1 ist größer als $var2"
+else
+   echo "$var1 ist kleiner als $var2"
+fi
+
+if [[ "$var2" < "$var3" ]]
+then
+   echo "$var2 ist kleiner als $var3"
+else
+   echo "$var2 ist größer als $var3"
+fi
+
+if [[ "$var3" < "$var4" ]]
+then
+   echo "$var3 ist kleiner als $var4"
+else
+   echo "$var3 ist größer als $var4"
+fi

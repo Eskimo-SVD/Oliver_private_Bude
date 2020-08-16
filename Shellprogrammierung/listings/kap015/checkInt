@@ -1,0 +1,65 @@
+#!/bin/sh
+# checkInt() : Überprüft, ob ein echter 
+# Integerwert eingegeben wurde
+
+# Gibt 0 (== OK) zurück, wenn es sich um einen gültigen
+# Integerwert handelt, ansonsten 1
+#
+checkInt() {
+    number="$1"
+    # mindest Wert für einen Integer (ggf. anpassen)
+    min=-2147483648
+    # maximaler Wert für einen Integer (ggf. anpassen)
+    max=2147483647
+
+   if [ -z $number ]
+   then
+      echo "Es wurde nichts Eingegeben"
+      exit 1
+   fi
+   
+   # Es könnte ein negativer Wert sein ...
+   if [ "${number%${number#?}}" = "-" ] 
+   then  # es ist ein negativer Wert - erstes Zeichen ein "-"
+      # das erste Zeichen nicht übergeben
+      testinteger="${number#?}" 
+   else
+      testinteger="$number"
+   fi
+   
+   # Alle unerwünschten Zeichen außer Zahlen entfernen ...
+   extract_nodigits="`echo $testinteger | \
+                      sed 's/[[:digit:]]//g'`"
+   # Ist jetzt noch was vorhanden 
+  if [ ! -z $extract_nodigits ]
+  then
+     echo "Kein numersches Format!"
+     return 1
+  fi
+  # mindest Grenze eingehalten ...
+  if [ "$number" -lt "$min" ]
+  then
+     echo "Der Wert ist unter dem erlaubten Mindestwert : $min"
+     return 1
+  fi
+  # max. Grenze eingehalten
+  if [ "$number" -gt "$max" ]
+  then
+     echo "Der Wert ist über dem erlaubten Maximalwert : $max"
+     return 1  
+  fi
+  return 0 # Ok, es ist ein Integer
+}
+
+# Ein Beispiel zum Testen der Funktion checkInput
+#
+echo -n "Eingabe machen: "
+read eingabe
+
+if ! checkInt "$eingabe"
+then
+   echo "Falsche Eingabe - Kein Integer"
+   exit 1
+else
+   echo "Die Eingabe ist Ok."
+fi

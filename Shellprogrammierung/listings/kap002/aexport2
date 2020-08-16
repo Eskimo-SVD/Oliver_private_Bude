@@ -1,0 +1,4 @@
+# Demonstriert den Umgang export
+# Name : aexport2
+
+echo "aexport2: $wichtig"

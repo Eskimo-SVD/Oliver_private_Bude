@@ -1,0 +1,6 @@
+# Name : aremover1
+
+for var in `find . -name "*.tmp"`
+do
+   rm $var
+done

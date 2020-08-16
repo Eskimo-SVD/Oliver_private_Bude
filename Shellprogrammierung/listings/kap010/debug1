@@ -1,0 +1,11 @@
+# Name : debug1
+
+trap 'printf "$LINENO :-> " ; read line ; eval $line' DEBUG
+
+val=1
+
+while [ "$val" -le 10 ]
+do
+   echo "Der ${val}. Schleifendurchlauf"
+   i=`expr $val + 1`
+done

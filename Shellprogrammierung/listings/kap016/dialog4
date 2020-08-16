@@ -1,0 +1,12 @@
+# Demonstriert dialog --inputbox
+# Name : dialog4
+
+name=`dialog --inputbox "Wie heißen Sie?" 0 0 "Jürgen" \
+ 3>&1 1>&2 2>&3`
+# Dialog-Bildschirm löschen
+dialog --clear
+
+dialog --msgbox "Hallo $name, Willkommen bei $HOST!" 5 50
+
+# Bildschirm löschen
+clear

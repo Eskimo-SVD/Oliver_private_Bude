@@ -1,0 +1,227 @@
+#! /bin/sh
+# Name: account
+# Mit diesem Script können Sie einen Benutzer
+# * Anlegen
+# * Löschen
+# * Sperren
+# * Sperre wieder aufheben
+
+# Pfade die beim Löschen eines Accounts benötigt werden
+# ggf erweitern und ergänzen um bspw. /var /tmp ...
+# überall eben, wo sich Dateien vom Benutzer befinden können
+searchpath="/home"
+
+usage() {
+   echo "Usage: $0 Benutzer      (Neuen Benutzer anlegen)"
+   echo "Usage: $0 -d Benutzer   (Benutzer löschen)"
+   echo "Usage: $0 -l Benutzer   (Benutzer sperren)"
+   echo "Usage: $0 -u Benutzer   (Gesperrten Benutzer wieder freigeben)"  
+}
+
+# Nur root darf dieses Script ausführen ...
+#
+if [ `id -u` != 0 ]
+then
+   echo "Es werden root-Rechte für dieses Script benötigt!"
+   exit 1
+fi
+
+# Ist das Kommando useradd auf dem System vorhanden ...
+#
+which useradd > /dev/null 2>1&
+if [ $? -ne 0 ]
+then
+   echo "Das Kommando 'useradd' konnte auf dem System nicht "\
+        " gefunden werden!"
+   exit 1
+fi
+
+if [ $# -eq 0 ]
+then
+   usage
+   exit 0
+fi
+
+if [ $# -eq 2 ]
+then
+   case $1 in
+      -d)   
+         # Existiert ein entsprechender Benutzer
+         if [ "`grep $2 /etc/passwd | \
+                awk -F : '{print $1}'`" = "$2" ]
+         then
+            echo "Dateien und Verzeichnisse von '$2' "\
+                 "werden gelöscht" 
+            # Alle Dateien und Verzeichnisse vom Benutzer löschen
+            find $searchpath -user $2 -print | sort -r | 
+            while read file
+            do
+              if [ -d $file ]
+              then
+                 rmdir $file
+              else
+                 rm $file
+              fi
+            done 
+         else
+            echo "Ein Benutzer '$2' existiert nicht in "\
+                 "/etc/passwd!"
+            exit 1
+         fi                                  
+         # Benutzer aus /etc/passwd und /etc/shadow löschen
+         userdel -r $2 2>/dev/null
+         echo "Benutzer '$2' erfolgreich gelöscht!"             
+         exit 0 ;;
+      -l)   
+         # Existiert ein entsprechender Benutzer
+         if [ "`grep $2 /etc/passwd | \
+                awk -F : '{print $1}'`" = "$2" ]
+         then
+            passwd -l $2
+         fi
+         echo "Benutzer '$2' wurde gesperrt"
+         exit 0 ;;              
+      -u) 
+         # Existiert ein entsprechender Benutzer
+         if [ "`grep $2 /etc/passwd | \
+                awk -F : '{print $1}'`" = "$2" ]
+         then
+            passwd -u $2
+         fi
+         echo "Benutzer '$2': Sperre aufgehoben"
+         exit 0 ;;  
+      -h)   usage
+            exit 1 ;;
+      -*)   usage
+            exit 1 ;;
+       *)   usage
+            exit 1 ;;
+   esac
+fi
+
+if [ $# -gt 2 ]
+then
+   usage
+   exit 1
+fi
+
+#####################################################
+#        Einen neuen Benutzer anlegen
+#
+# Existiert bereits ein entsprechender Benutzer
+#
+if [ "`grep $1 /etc/passwd | awk -F : '{print $1}'`" = "$1" ]
+then
+   echo "Ein Benutzer '$1' existiert bereits in /etc/passwd ...!" 
+   exit 1
+fi
+
+# Bildschirm löschen
+clear
+
+# Zuerst wird die erste freie verwendbare User-ID gesucht,
+# vorgeschlagen und bei Betätigung verwendet, oder es wird eine 
+# eingegebene User-ID verwendet, die allerdings ebenfalls 
+# überprüft wird, ob diese bereits in /etc/passwd existiert.
+#
+userid=`tail -1 /etc/passwd |awk -F : '{print $3 + 1}'`
+echo "Eingabe der UID [default: $userid] " | tr -d '\n'
+read _UIDOK
+# ... wurde nur ENTER betätigt
+if [ "$_UIDOK" = "" ]
+then
+   _UIDOK=$userid
+# ... es wurde eine UID eingegeben -> 
+# Überprüfen ob bereits vorhanden ...
+elif [ `grep $_UIDOK /etc/passwd | awk -F : '{print $3}'` = "" ]
+then
+   _UIDOK=$userid
+else  
+   echo "UID existiert bereits! ENTER=Neustart / STRG+C=Ende"
+   read
+   $0 $1
+fi
+
+# Selbiges mit Gruppen-ID
+#
+groupid=`grep users /etc/group |awk -F : '{print $3}'`
+echo "Eingabe der GID: [default: $groupid] " | tr -d '\n'
+read _GIDOK
+if [ "$_GIDOK" = "" ]
+then
+   _GIDOK=$groupid
+elif [ "`grep $_GIDOK /etc/group`" = "" ]
+then
+   echo "Dies Gruppe existiert nicht in /etc/group! "\
+        "ENTER=Neustart / STRG+C=Ende"
+   read
+   $0 $1
+fi
+
+# Das Benutzer Heim-Verzeichnis /home abfragen
+#
+echo "Eingabe des Heim-Verzeichnisses: [default: /home/$1] " | \
+      tr -d '\n'
+read _HOME
+# Wurde nur ENTER gedrückt, default verwenden ...
+if [ "$_HOME" = "" ]
+then
+   _HOME="/home/$1"
+fi
+
+# Die Standard-Shell für den Benutzer festlegen
+#
+echo "Eingabe der Shell: [default: /bin/bash] " | tr -d '\n'
+read _SHELL
+# Wurde nur ENTER gedrückt, default verwenden ...
+if [ "$_SHELL" = "" ]
+then
+   _SHELL=/bin/bash
+# Gibt es überhaupt eine solche Shell in /etc/shells ...
+elif [ "`grep $_SHELL /etc/shells`" = "" ]
+then
+   echo "'$_SHELL' gibt es nicht in /etc/shells! "\
+        " ENTER=Neustart / STRG+C=Ende"
+   read
+   $0 $1
+fi
+
+# Kommentar oder Namen eingeben
+echo "Eingabe eines Namen: [beliebig] " | tr -d '\n'
+read _REALNAME
+
+# Expire date
+echo "Ablaufdatum des Accounts : [MM/DD/YY] " | tr -d '\n'
+read _EXPIRE
+
+clear
+echo
+echo "Folgende Eingaben wurden erfasst:"
+echo "---------------------------------"
+echo "User-ID           : [$_UIDOK]"
+echo "Gruppen-ID        : [$_GIDOK]"
+echo "Heimatverzeichnis : [$_HOME]"
+echo "Login-Shell       : [$_SHELL]"
+echo "Name/Komentar     : [$_REALNAME]"
+echo "Account läuft aus : [$_EXPIRE]"
+echo
+echo "Account erstellen? (j/n) "
+read _verify
+
+case $_verify in
+   [nN]*)
+      echo "Account wurde nicht erstellt!" | tr -d '\n'
+      exit 0 ;;
+   [jJ]*)
+        useradd -u $_UIDOK -g $_GIDOK -d $_HOME -s $_SHELL \
+                -c "$_REALNAME" -e "$_EXPIRE" $1
+        cp -r /etc/skel $_HOME
+        chown -R $_UIDOK:$_GIDOK $_HOME
+        passwd $1
+        echo "Benutzer $1 [$_REALNAME] hinzugefügt "\
+             "am `date`" >> /var/adm/newuser.log
+        finger -m $1 |head -2
+        sleep 2 
+        echo "Benutzer $1 erfolgreich hinzugefügt!" ;;
+      *) exit 1;;
+esac

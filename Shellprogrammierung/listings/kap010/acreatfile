@@ -1,0 +1,14 @@
+# Eine Datei anlegen
+# Name : creatfile
+
+CreatFile=atestfile.txt
+
+if [ ! -e $CreatFile ]
+then
+touch $CreatFile
+if [ ! -e $CreatFile ] ; then
+echo "Konnte $CreatFile nicht anlegen" ; exit 1
+fi
+fi
+
+echo "$CreatFile angelegt/vorhanden!"

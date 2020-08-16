@@ -1,0 +1,16 @@
+# Name : aeval_cool
+
+Mo=backup1
+Di=backup2
+Mi=backup3
+Do=backup4
+Fr=backup5
+Sa=backup6
+So=backup7
+
+tag=`date +"%a"`
+
+eval backup=\$$tag
+
+echo "Heute wird das Backup-Script $backup ausgeführt"
+./$backup

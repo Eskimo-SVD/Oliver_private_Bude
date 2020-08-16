@@ -1,0 +1,8 @@
+# Demonstriert das Kommando awk im Shellscript
+# Name : aawk
+
+zeichen="juergen wolf"
+
+laenge=`echo $zeichen | awk '{print length($zeichen)}'`
+
+echo "$zeichen enthaelt $laenge Zeichen"

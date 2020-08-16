@@ -1,0 +1,8 @@
+# Positionsparameter mit set und Kommando-Substitution
+# auserinfo
+
+set `who | grep $1`
+
+echo "User        : $1"
+echo "Bildschirm  : $2"
+echo "Login um    : $5"

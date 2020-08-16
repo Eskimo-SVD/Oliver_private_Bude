@@ -1,0 +1,24 @@
+# Demonstriert Vorgabewerte
+# Name : adefaultvar
+
+var2=var2
+var4=var4
+var5=var5
+
+# Erstes Argument in der Kommandozeile, falls nicht verwendet
+echo ${1:-"Alternatives_erstes_Argument"}
+# Hier ist var1 nicht besetzt - also Leerstring zurückgeben
+echo ${var1:+"wort1"}
+# var2 ist gesetzt ("var2") und wird somit von "wort2" überschrieben
+echo ${var2:+"wort2"}
+# Hier ist var3 nicht gesetzt und wird vom String "wort3" beschrieben
+echo ${var3:="wort3"}
+# Hier ist var4 besetzt mit "var4" und wird so auch zurückgegeben
+echo ${var4:="wort4"}
+# var5 ("var5") ist nicht leer und wird somit auch zurückgegeben
+echo ${var5:?"wort5"}
+# var6 ist leer und somit wird eine Fehlermeldung mit dem Text "wort6" ...
+# ausgegeben und das Shellscript beendet
+echo ${var6:?"wort6"}
+
+echo "Dieser String wird nie ausgegeben"

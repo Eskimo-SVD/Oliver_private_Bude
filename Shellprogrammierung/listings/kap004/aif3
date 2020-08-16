@@ -1,0 +1,11 @@
+# Demonstriert eine Kommandoverkettung mit if
+# Name : aif3
+
+# In /usr/include nach erstem eingegebene Argument suchen
+if ls -l /usr/include | grep $1 | wc -l
+   then
+   echo "Suche erfolgreich"
+   exit 0
+fi
+
+echo "Suche erfolglos"

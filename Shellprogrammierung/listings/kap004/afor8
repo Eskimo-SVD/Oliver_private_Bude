@@ -1,0 +1,28 @@
+# Demonstriert die Verwendung von einer 
+# zweiter for-Form (Bash only)
+# afor8
+
+[ $# -lt 1 ] && echo "Mindestens ein Argument" && exit 1
+
+# Liste von Argumenten in einem Array speichern
+array=( $* )
+
+for((i=0; i<$#; i++))
+do
+   echo "Argument $i ist ${array[$i]}"
+done
+
+# Countdown
+for((i=5; i>0; i--))
+do
+   echo $i
+   sleep 1   # Eine Sekunde anhalten
+done
+
+echo "...go"
+
+# Auch andere arithmetische Ausdrücke als Zähler möglich
+for((i=100; i>0; ((i=i/2)) ))
+do
+   echo $i
+done

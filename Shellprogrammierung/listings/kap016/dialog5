@@ -1,0 +1,10 @@
+# Demonstriert dialog --textbox
+# Name : dialog5
+
+# Zeigt den Inhalt des eigenen Quelltextes an
+dialog --textbox "$0" 0 0
+# Dialog-Bildschirm löschen
+dialog --clear
+
+# Bildschirm löschen
+clear

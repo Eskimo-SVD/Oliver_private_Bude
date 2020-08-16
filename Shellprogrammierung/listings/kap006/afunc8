@@ -1,0 +1,18 @@
+# Demonstriert die Verwendung von Parametern
+# Name : afunc8
+
+# Funktion myname
+myname() {
+   echo "Ich bin die Funktion: $FUNCNAME"
+}
+
+# Funktion andmyname
+andmyname() {
+   echo "Und ich hieße $FUNCNAME"
+}
+
+# Hauptprogramm
+echo "Vor der Funktion ..."
+myname
+andmyname
+echo "... nach der Funktion"

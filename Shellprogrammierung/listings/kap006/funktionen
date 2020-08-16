@@ -1,0 +1,6 @@
+# Name : funktionen
+
+# Funktion localtest
+afunction() {
+   echo "Ich bin eine Funktion"
+}

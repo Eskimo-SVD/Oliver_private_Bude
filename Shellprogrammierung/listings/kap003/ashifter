@@ -1,0 +1,12 @@
+# Demonstriert das Kommando shift
+# Name : ashifter
+
+echo "Argumente (Anzahl)  : $* ($#)"
+echo "Argument \$1        : $1"
+shift
+echo "Argumente (Anzahl)  : $* ($#)"
+echo "Argument \$1        : $1"
+shift
+echo "Argumente (Anzahl)  : $* ($#)"
+echo "Argument \$1        : $1"
+shift

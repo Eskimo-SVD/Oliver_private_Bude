@@ -1,0 +1,37 @@
+#!/bin/bash
+
+declare -A ADRESSEN
+
+while [ -z $NAME ]
+do
+	echo -n "Bitte Name eingeben : "
+	read NAME
+	if [ -z "$NAME" ]
+	then
+		break
+	fi
+	echo -n "Bitte Adresse eingeben : "
+	read ADR
+	if [ -z "$ADR" ]
+	then
+		echo "Keine Adresse angegeben"
+		sleep 2
+		continue
+	fi
+	ADRESSEN[$NAME]=$ADR
+	NAME=""
+done
+
+while [ -z "$SUCH" ]
+do
+	echo -n "Bitte zu suchenden Namen eingeben : "
+		read SUCH
+		if [ -z "$SUCH" ]
+		then
+			echo Ende 
+			exit 0
+		fi	
+		echo  Adresse von $SUCH ist ${ADRESSEN[${SUCH}]}
+		SUCH=""
+done
+

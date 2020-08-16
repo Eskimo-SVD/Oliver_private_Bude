@@ -1,0 +1,19 @@
+#!/bin/bash
+declare -A MULTI
+MULTI[0,0]=0
+MULTI[0,1]=1
+MULTI[0,2]=2
+MULTI[1,0]=3
+MULTI[1,1]=4
+MULTI[1,2]=5
+MULTI[2,0]=6
+MULTI[2,1]=7
+MULTI[2,2]=8
+for((i=0; i<=2; i++))
+do
+	for((j=0; j<=2; j++))
+	do
+		echo -n "${MULTI[$i,$j]} "
+	done
+	echo
+done

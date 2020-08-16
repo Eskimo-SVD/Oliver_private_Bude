@@ -1,0 +1,18 @@
+# Demonstriert Datei-Test mit Negation
+# anegation
+
+file=atestfile.txt
+
+# Eine Datei anlegen
+
+if [ ! -e $file ]
+then
+   touch $file
+   if [ ! -e $file ]
+   then
+      echo "Konnte $file nicht anlegen"
+      exit 1
+   fi
+fi
+
+echo "$file angelegt/vorhanden!"

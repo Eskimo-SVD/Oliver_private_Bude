@@ -1,0 +1,12 @@
+# Überprüft die richtige Anzahl von Argumenten 
+# aus der Kommandozeile
+# Name : atestarg
+
+if [ $# -ne 2 ]
+then
+   echo "Hier sind mindestens 2 Argumente erforderlich"
+   echo "usage: $0 arg1 arg2 ... [arg_n]"
+   exit 1
+else
+   echo "Erforderliche Anzahl Argumente erhalten"
+fi

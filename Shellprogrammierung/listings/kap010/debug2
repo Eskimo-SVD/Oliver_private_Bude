@@ -1,0 +1,35 @@
+# Name : debug2
+
+# ------- DEBUG Anfang --------- #
+
+# Die übliche eval-Funktion
+debugging() {
+   printf "STOP > "
+   while true
+   do
+      read line
+      [ "$line" = "" ] && break
+      eval $line
+      printf " > "
+   done
+}
+
+typeset -i index=1
+
+# Das komplette Script in ein Array einlesen
+while read zeile[$index]
+do
+   index=index+1
+done<$0   
+
+trap 'echo "${zeile[$LINENO]}" ; debugging' DEBUG
+
+# ------- DEBUG Ende   --------- #
+
+typeset -i val=1
+
+while (( $val <= 10 ))
+do
+   echo "Der $val Schleifendurchlauf"
+   val=val+1
+done

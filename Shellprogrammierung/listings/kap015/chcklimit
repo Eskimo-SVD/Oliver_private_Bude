@@ -1,0 +1,41 @@
+#!/bin/sh
+# Name: chcklimit
+# Dieses Script verschickt eine Mail wenn der Plattenverbrauch
+# eines Filesystems an ein bestimmtes Limit stösst.
+
+# Ab wieviel Prozent soll ein Warnung verschickt werden
+WARN_CAPACITY=80 
+# Wohin soll eine Mail verschickt werden
+TOUSER=user@host.de  
+
+
+call_mail_fn() {
+   servername=`hostname`
+   msg_subject="$servername - Dateisystem(${FILESYSTEM}) "\
+               "verwendet ${FN_VAR1}% - festgestellt am: `date`"
+   echo $msg_subject | mail -s "${servername}:Warnung" $TOUSER
+}
+
+if [ $# -lt 1 ]
+then
+   echo "usage: $0 FILESYSTEM"
+   echo "Bpsw.: $0 /dev/hda6"
+fi
+
+# Format von df -k:
+# Dateisystem   1K-Blöcke   Benutzt Verfügbar Ben% Eingehängt auf
+# /dev/hda4     15528224    2610376 12917848  17%  /
+# Den fünften Wert wollen wir haben: 'Ben%'
+#
+VAR1=`df -k ${1} | /usr/bin/tail -1 | \
+     /usr/bin/awk '{print $5}' `
+# Prozentzeichen herausschneiden
+VAR2=`echo $VAR1 | \
+      /usr/bin/awk '{ print substr($1,1,length($1)-1) }' `
+
+# Wurde die Warnschwelle erreicht ... ?
+if [ $VAR2 -ge ${WARN_CAPACITY} ]
+then
+   FN_VAR1=$VAR2
+   call_mail_fn
+fi

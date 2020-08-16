@@ -1,0 +1,28 @@
+# Demonstriert die Verwendung von bc
+# Name : abc
+
+echo Rechnen mit bc
+
+varA=1.23
+varB=2.34
+varC=3.45
+
+# Addieren, Genauigkeite 3 nach dem Komma
+gesamt=`echo "scale=2 ; $varA+$varB+$varC" | bc`
+echo $gesamt
+
+# Quadratwurzel
+varSQRT=`echo "scale=5 ; sqrt($varA)" | bc`
+echo $varSQRT
+
+# Einfach Integer-Arithmetik
+varINT=`echo "(8+5)*2" | bc`
+echo $varINT
+
+# Trigonometrische Berechnung mit der math library -l
+varRAD=`echo "scale=10 ; a(1)/45" | bc -l`
+echo -e "1° = $varRAD rad"
+
+# Sinus
+varSINUS45=`echo "scale=10 ; s(45*$varRAD)" | bc -l`
+echo "Der Sinus von 45° ist $varSINUS45"

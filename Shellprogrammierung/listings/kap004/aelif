@@ -1,0 +1,19 @@
+# Demonstriert eine elif-Verzweigung
+# Name : aelif
+
+if which xmake > /dev/null 2>&1
+then
+   echo "xmake vorhanden"
+   # Hier die Kommandos für xmake
+elif which make > /dev/null 2>&1
+then 
+   echo "make vorhanden"
+   # Hier die Kommandos für make
+elif which gmake > /dev/null 2>&1
+then 
+   echo "gmake vorhanden"
+   # Hier die Kommandos für gmake
+else
+   echo "Kein make auf diesem System vorhanden"
+   exit 1
+fi

@@ -1,0 +1,33 @@
+#!/bin/sh
+# Name : sleep_daemon
+
+DAEMON="/usr/sbin/sleep_daemon"
+test -f $DAEMON || exit 0
+
+case "$1" in
+   start)
+        echo -n "Starte sleep_daemon"
+        $DAEMON
+        echo "."
+        ;;
+    stop)
+        echo -n "Stoppe sleep_daemon"
+        killall sleep
+        echo "."
+        ;;
+    restart)
+        echo -n "Stoppe sleep_daemon"
+        killall sleep
+        echo "."
+        echo -n "Starte sleep_daemon"
+        $DAEMON
+        echo "."
+        ;;
+        # Hierzu wird auch gerne folgende Sntax eingesetzt:
+        # $0 stop
+        # $0 start;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
+esac

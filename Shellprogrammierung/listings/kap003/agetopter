@@ -1,0 +1,12 @@
+# Demonstriert getopt
+# Name : agetopter
+
+while getopts abc:D: opt
+do
+   case $opt in
+       a) echo "Option a";;
+       b) echo "Option b";;
+       c) echo "Option c : ($OPTARG)";;
+       D) echo "Option D : ($OPTARG)";;
+   esac
+done 

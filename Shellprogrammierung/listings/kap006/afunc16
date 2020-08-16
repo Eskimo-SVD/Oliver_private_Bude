@@ -1,0 +1,15 @@
+# Demonstriert die Verwendung von Parametern
+# Name : afunc16
+
+# Globale Variable
+val1=11
+
+# Funktion value1
+value1() {
+   val1=10
+}
+
+# Hauptprogramm
+echo $val1
+value1
+echo $val1

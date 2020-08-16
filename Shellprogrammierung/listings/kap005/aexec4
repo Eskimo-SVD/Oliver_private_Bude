@@ -1,0 +1,12 @@
+# Demonstriert eine Umlenkung mit exec
+# aexec4
+
+exec 3< $1
+
+while read line <&3
+do
+   echo $line
+   printf "Eine weitere Zeile einlesen? [j/n] : "
+   read
+   [ "$REPLY" = "n" ] && break
+done

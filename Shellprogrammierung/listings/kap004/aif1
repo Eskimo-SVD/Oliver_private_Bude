@@ -1,0 +1,13 @@
+# Demonstriert eine Verzweigung mit if
+# Name : aif1
+
+# Benutzer in /etc/passwd suchen ...
+if grep "^$1" /etc/passwd
+then
+   # Ja, grep war erfolgreich
+   echo "User $1 ist bekannt auf dem System"
+   exit 0;  # Erfolgreich beenden ...
+fi
+
+# Angegebener User scheint hier nicht vorhanden zu sein ...
+echo "User $1 gibt es hier nicht"

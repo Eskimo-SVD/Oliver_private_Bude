@@ -1,0 +1,21 @@
+# Eine Datei anlegen
+# Name : creatfile
+
+# Datei die anglegt werden soll
+creatfile=atestfile.txt
+
+# Existiert diese Datei bereits ...
+if [ ! -e $creatfile ]
+then                      # Nein ...
+   touch $creatfile       # Datei anlegen ...
+   # Jetzt nochmals überprüfen ...
+   if [ ! -e $creatfile ]
+   then
+      echo "Konnte $creatfile nicht anlegen"
+      exit 1   # Script erfolglos beenden
+   else
+      echo "$creatfile erfolgreich angelegt"
+   fi
+fi
+
+echo "$creatfile vorhanden!"

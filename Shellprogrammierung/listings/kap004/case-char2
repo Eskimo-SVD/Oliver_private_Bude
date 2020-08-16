@@ -1,0 +1,14 @@
+#!/bin/bash
+
+case "$1" in
+    [[:print:]] )  echo "$1 ist ein druckbares Zeichen";;& 
+    # The ;;& terminator continues to the next pattern test.
+    [[:alnum:]] )  echo "$1 ist eine Zahl oder ein Buchstabe.";;&
+    [[:alpha:]] )  echo "$1 ist ein Buchstabe.";;&
+    [[:lower:]] )  echo "$1 ist ein kleiner Buchstabe.";;&
+    [[:upper:]] )  echo "$1 ist ein grosser Buchstabe.";;&
+    [[:digit:]] )  echo "$1 ist eine Zahl.";&
+    # Der Abschluss ;& führt die Kommandos des nachfolgenden 
+    # Musters auf jeden Fall aus, auch wenn das Muster nicht passt
+    egal-was    )  echo "********************************";;
+esac

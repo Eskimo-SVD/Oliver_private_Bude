@@ -1,0 +1,19 @@
+# Demonstriert dialog --msgbox
+# Name : dialog2
+
+dialog --yesno "Möchten Sie wirklich abbrechen?" 0 0
+# 0=ja; 1=nein
+antwort=$?
+# Dialog-Bildschirm löschen
+dialog --clear
+
+# Ausgabe auf die Konsole
+if [ $antwort = 0 ]
+then
+   dialog --msgbox "Die Antwort war JA." 5 40
+else
+   dialog --msgbox "Die Antwort war NEIN." 5 40
+fi
+
+# Bildschirm löschen
+clear

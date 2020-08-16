@@ -1,0 +1,10 @@
+# Beliebig viele Argumente in der Kommandozeile auswerten
+# Name : aunlimited
+
+i=1
+
+for argument in $*
+   do 
+      echo "$i. Argument : $argument"
+      i=`expr $i + 1`
+   done

@@ -1,0 +1,9 @@
+# Demonstriert die case-Anweisung zum Auswerten von Optionen
+# acase7
+
+# Als erstes Argument angeben
+case "$1" in
+   -[tT]|-test)        echo "Option \"test\" aufgerufen"  ;;
+   -[hH]|-help|-hilfe) echo "Option \"hilfe\" aufgerufen" ;;
+   *)                  echo "($1) Unbekannte Option aufgerufen!"
+esac

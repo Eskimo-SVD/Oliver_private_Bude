@@ -1,0 +1,9 @@
+# Beispiel demonstriert das Kommando let
+# Name: alet
+
+varA=100
+varB=50
+
+let varC=$varA+$varB
+
+echo $varC

@@ -1,0 +1,9 @@
+# Demonstriert dialog --menu
+# Name : dialog6
+
+os=`dialog --menu "Betriebssystem wählen" 0 0 0 \
+ "Linux" "" "BSD" "" "Solaris" "" 3>&1 1>&2 2>&3`
+dialog --clear
+dialog --yesno "Bestätigen Sie Ihre Auswahl: $os" 0 0
+dialog --clear
+clear

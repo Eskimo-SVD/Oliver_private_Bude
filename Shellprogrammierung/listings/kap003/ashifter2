@@ -1,0 +1,10 @@
+# Demonstriert das Kommando shift in einer Schleife
+# Name : ashifter2
+
+while [ $# -ne 0 ]  # ne = not equal
+do
+    # Tue was mit dem 1. Parameter
+    # Hier einfach eine Ausgabe ...
+    echo $1     # immer 1. Parameter verarbeiten
+    shift       # weiterschieben ...
+done

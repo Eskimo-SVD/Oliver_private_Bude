@@ -1,0 +1,15 @@
+# Demonstriert einen Plot mit gnuplot und dem Here-Dokument
+# Name : aplot4
+
+FILE=besucher.dat
+
+gnuplot -persist <<PLOT
+set xdata time
+set timefmt '%d.%m.%y'
+set format x "%d/%m"
+set ylabel "Besucher"
+set title " --- Besucherstatistik vom 10.3. bis 16.3.2010 ---"
+set data style lp
+plot "$FILE" using (timecolumn(1)):2 t "Besucher" pointsize 2 , \
+"$FILE" using (timecolumn(1)):3 t "Besucher mit untersch. IP" linewidth 2 pointsize 2
+PLOT

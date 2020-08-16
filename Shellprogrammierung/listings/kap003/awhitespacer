@@ -1,0 +1,6 @@
+# Argumente mit einem Leerzeichen
+# Name : awhitespacer
+
+echo "Vorname : $1"
+echo "Name    : $2"
+echo "Alter   : $3"

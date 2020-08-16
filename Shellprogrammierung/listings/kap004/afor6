@@ -1,0 +1,15 @@
+# Demonstriert die Verwendung von for und
+# der Kommando-Substitution
+# afor6
+
+# Komplette Argumentenliste für News an andere User verwenden
+NEU="$*"
+
+for user in `cat .userlist`
+do
+   if who | grep ^$user > /dev/null
+   then 
+      echo $NEU | write $user
+      echo "Verschickt an $user"
+   fi
+done

@@ -1,0 +1,54 @@
+#!/bin/sh
+# ssyncron
+# Skript zum Synchronisieren von Daten
+
+usage() {
+   echo "usage: prgname [-option] [Verzeichnis]"
+   echo
+   echo "-u : Ein Verzeichnis auf dem Server mit einem"\
+        " Lokalen synchronisieren"
+   echo "-d : Ein lokales Verzeichnis mit einem Verzeichnis"\
+        " auf dem Server synchronisieren"
+   exit 1
+}
+
+# Konfigurationsdaten
+#
+# Pfad zu den Daten (Lokal)
+local_path="$HOME/"
+# Pfad zu den Dateien (Server)
+remote_path="/home/us10129"
+# Loginname
+username="us10129@myhoster.de"
+# Optionen zum Download '-d'
+D_OPTIONS="-e ssh -av --exclude '*.xvpics' --exclude 'cache' --exclude 'bestellen'"
+# Optionen zum Hochladen '-u'
+U_OPTIONS="-e ssh -av"
+
+# rsync vorhanden ...
+if [ `which rsync` = "" ]
+then
+   echo "Das Script benÃ¶tigt 'rsync' zur AusfÃ¼hrung ...!"
+   exit 1
+fi
+
+# Pfad zu rsync
+RSYNC=`which rsync`
+
+site=$2
+
+case "$1" in
+   # Webseite herunterladen - Synchronisieren Lokal mit Server
+   -d)
+      [ -z $2 ] && usage # Verzeichnis fehlt ...
+      $RSYNC $D_OPTIONS \
+      $username:${remote_path}/${site}/ ${local_path}${site}/ ;;
+   # Webseite updaten - Synchronisieren Server mit Lokal
+   -u)
+      $RSYNC $U_OPTIONS \
+      ${local_path}${site}/ $username:${remote_path}/${site}/ ;;
+   -*)
+      usage ;;
+    *)
+      usage ;;
+esac

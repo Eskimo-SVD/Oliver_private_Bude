@@ -1,0 +1,10 @@
+# Demonstriert das Einlesen einzelner Zeichen
+# Name : anoecho
+
+printf "Bitte Eingabe machen : "
+# Ausgabe auf dem Bildschirm abschalten
+stty -echo
+read passwort
+# Ausgabe auf dem Bildschirm wieder einschalten
+stty echo
+printf "\nIhre Eingabe lautete : %s\n" $passwort

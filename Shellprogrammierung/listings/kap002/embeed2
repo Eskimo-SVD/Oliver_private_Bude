@@ -1,0 +1,6 @@
+# Variablen-Namen einbetten bzw. abgrenzen
+# Name : embeed
+
+file=back_
+
+cp datei.txt ${file}datei.txt

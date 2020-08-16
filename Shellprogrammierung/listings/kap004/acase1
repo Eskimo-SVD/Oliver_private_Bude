@@ -1,0 +1,14 @@
+# Demonstriert die case-Anweisung
+# acase1
+
+tag=`date +%a`
+
+case "$tag" in
+  Mo)   echo "Mo : Backup Datenbank machen" ;;
+  Di)   echo "Di : Backup Rechner Saurus"   ;;
+  Mi)   echo "Mi : Backup Rechner Home"     ;;
+  Do)   echo "Do : Backup Datenbank machen" ;;
+  Fr)   echo "Fr : Backup Rechner Saurus"   ;;
+  Sa)   echo "Sa : Backup Rechner Home"     ;;  
+  So)   echo "So : Sämtliche Backups auf CD-R sichern" ;;
+esac

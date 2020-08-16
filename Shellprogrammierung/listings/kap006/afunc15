@@ -1,0 +1,11 @@
+# Demonstriert die Verwendung von Parametern
+# Name : afunc15
+
+# Funktion value1
+value1() {
+   val1=10
+}
+
+# Hauptprogramm
+value1
+echo $val1

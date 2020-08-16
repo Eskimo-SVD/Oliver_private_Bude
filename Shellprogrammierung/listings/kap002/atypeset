@@ -1,0 +1,16 @@
+# Beispiel mit typeset
+# Name : atypeset
+
+typeset -i c
+
+a=5
+b=2
+
+c=a+b
+echo $c
+
+c=a*b
+echo $c
+
+c=\(a+b\)*2
+echo $c

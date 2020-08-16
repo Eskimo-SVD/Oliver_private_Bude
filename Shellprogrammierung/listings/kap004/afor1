@@ -1,0 +1,12 @@
+# Demonstriert die Verwendung von for mit Argumenten
+# afor1
+
+for datei in "$@"
+do
+   [ -f $datei ] && echo "$datei: Reguläre Datei"
+   [ -d $datei ] && echo "$datei: Verzeichnis"
+   [ -b $datei ] && echo "$datei: Gerätedatei(block special)"
+   [ -c $datei ] && echo "$datei: Gerätedatei(character special)"
+   [ -t $datei ] && echo "$datei: serielles Terminal"
+   [ ! -e $datei ] && echo "$datei: existiert nicht" 
+done

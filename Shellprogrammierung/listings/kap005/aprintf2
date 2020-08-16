@@ -1,0 +1,19 @@
+# Demonstriert den printf-Befehl
+# aprintf2
+
+text=Kopfstand
+a=3
+b=12345
+
+printf "|01234567890123456789|\n"
+printf "|%s|\n" $text
+printf "|%20s|\n" $text
+printf "|%-20s|\n" $text
+printf "|%20.4s|\n" $text
+printf "|%-20.4s|\n\n" $text
+
+printf "Fließkommazahl: %f\n" $a
+printf "gekürzt       : %.2f\n" $a
+printf "Ganzzahl      : %d\n" $b
+printf "gekürzt       : %.2d\n" $b
+printf "erweitert     : %.8d\n" $b

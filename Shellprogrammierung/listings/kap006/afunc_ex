@@ -1,0 +1,5 @@
+# Name : afunc_ex
+
+echo "Rufe eine externe Funktion auf ..."
+. funktionen
+echo "... ich bin fertig"

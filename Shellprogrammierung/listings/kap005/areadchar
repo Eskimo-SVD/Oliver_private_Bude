@@ -1,0 +1,16 @@
+# Demonstriert das Einlesen einzelner Zeichen
+# Name : areadchar
+
+echo "Bitte eine Taste betätgen - mit q beenden"
+char=''
+# Terminal in den "rohen" Modus schalten
+stty raw -echo
+# In Schleife überprüfen ob 'q' gedrückt wurde
+while [ "$char" != "q" ]
+do
+   char=`dd bs=1 count=1 2>/dev/null`
+done
+# Den "rohen" Modus wieder abschalten
+stty -raw echo
+
+echo "Die Taste war $char"

@@ -1,0 +1,9 @@
+# Demonstriert die Kommando-Substitution
+# Name : asubstit
+
+tag=`date +%A`
+datum=`date +%d.%m.%Y`
+count=`ls -l | wc -l`
+
+echo "Heute ist $tag der $datum"
+echo "Sie befinden sich in $HOME (Inhalt: $count Dateien)"

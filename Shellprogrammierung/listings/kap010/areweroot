@@ -1,0 +1,10 @@
+# Name : areweroot
+
+if [ $UID = 0 ]
+then
+   echo "Wir sind root!"
+   renice -5 $$
+else
+   echo "Wir sind nicht root!"
+   sudo renice -5 $$
+fi

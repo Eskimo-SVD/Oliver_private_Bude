@@ -1,0 +1,11 @@
+# Ein einfaches Backup-Script
+# Name : abackup
+
+# datum hat die Form YYYY_MM_DD
+datum=$(date +%Y_%m_%d)
+
+# Ein Verzeichnis in der Form backup_YYYY_MM_DD anlegen
+mkdir backup_$datum
+
+# Alle Textdateien aus dem Heimverzeichnis sichern
+cp $HOME/*.txt backup_$datum

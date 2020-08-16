@@ -1,0 +1,7 @@
+# Eine variable Anzahl von Argumenten
+# Name : avararg2
+
+for i in "$*"
+   do
+      echo '$*:' $i
+   done

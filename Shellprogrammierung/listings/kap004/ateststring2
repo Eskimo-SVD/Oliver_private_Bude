@@ -1,0 +1,22 @@
+# Demonstriert erweiterte Zeichenkettenvergleiche
+# ateststring2
+
+if [ $# -lt 1 ]
+then
+   echo "Hier ist mindestens ein Argumente erforderlich"
+   echo "usage: $0 Zeichenkette"
+   exit 1
+fi
+
+if [[ "$1" = *ist* ]]
+then
+   echo "$1 enthält die Textfolge \"ist\""
+elif [[ "$1" = ?art ]]
+then 
+   echo "$1 enthält die Textfolge \"art\""
+elif [[ "$1" = kap[0-9] ]]
+then 
+   echo "$1 enthält die Textfolge \"kap\"" 
+else
+   echo "Erfolgloser Muster-Vergleich"
+fi

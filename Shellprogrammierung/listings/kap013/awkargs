@@ -1,0 +1,9 @@
+#!/usr/bin/awk –f
+
+# Name :  awkargs
+ 
+ BEGIN   {
+      print "Anzahl Argumente: ", ARGC;
+      for (i=0; i < ARGC; i++)
+          print i, ". Argument: ", ARGV[i];
+ }

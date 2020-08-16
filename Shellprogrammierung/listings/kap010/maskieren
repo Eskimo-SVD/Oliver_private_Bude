@@ -1,0 +1,11 @@
+# Name : maskieren
+
+nobody() {
+   echo "Die Ausgabe wollen wir nicht!!!"
+}
+
+echo "Ausgabe1"
+exec 1>/dev/null
+nobody
+exec 1>`tty`
+echo "Ausgabe2"

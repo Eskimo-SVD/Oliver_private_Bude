@@ -1,0 +1,17 @@
+# Demonstriert die Verwendung von IFS
+# Name : aifs2
+
+# IFS sichern
+BACKIFS="$IFS"
+# Minuszeichen als Trenner
+IFS=:
+
+# PATH anhand von Trennzeichen in IFS auftrennen
+set $PATH
+
+for path in "$@"
+do
+   echo "$path"
+done
+
+IFS=$BACKIFS

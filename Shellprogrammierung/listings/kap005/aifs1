@@ -1,0 +1,23 @@
+# Demonstriert die Verwendung von IFS
+# Name : aifs1
+
+# IFS sichern
+BACKIFS="$IFS"
+# Minuszeichen als Trenner
+IFS=-
+
+counter=1
+
+var="Wolf-Jürgen-30-Bayern"
+# var anhand von Trennzeichen in IFS auftrennen
+set $var
+
+# Ein Zugriff auf $1, $2, ... wäre hier auch möglich
+
+for daten in "$@"
+do
+   echo "$counter. $daten"
+   counter=`expr $counter + 1`
+done
+
+IFS=$BACKIFS

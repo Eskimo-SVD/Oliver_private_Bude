@@ -1,0 +1,9 @@
+# Demonstriert die Verwendung von Here-Dokumenten
+# Name : ahere1
+
+cat <<TEXT_MARKE
+Heute ist `date`,
+Sie befinden Sie im Verzeichnis `pwd`. Ihr 
+aktuelles Terminal ist `echo -n $TERM` und
+Ihr Heimatverzeichnis befindet sich in $HOME.
+TEXT_MARKE

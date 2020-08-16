@@ -1,0 +1,5 @@
+# Anzahl von Argumenten
+# Name : acountarg
+
+echo $*
+echo "Das sind $# Argumente"

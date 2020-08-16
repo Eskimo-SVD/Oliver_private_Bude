@@ -1,0 +1,21 @@
+# Demonstriert eine Umlenkung mit exec
+# aexec3
+
+# Wird noch auf dem Bildschirm ausgegeben
+echo "$0 wird ausgeführt"
+# Alle Eingaben im Script werden hier von data.dat entnommen
+exec <data.dat
+
+printf "%-15s %-15s %-8s\n" "Nachname" "Vorname" "Telefon"
+printf "+%-15s+%-15s+%-8s\n" "--------" "-------" "-------"
+
+while read vorname nachname telefon
+do
+   printf " %-15s  %-15s  %-8d\n" $nachname $vorname $telefon
+   break # Hier wird Testweise nach einem Durchlauf abgebrochen
+done
+
+while read vorname nachname telefon
+do
+   printf " %-15s  %-15s  %-8d\n" $nachname $vorname $telefon
+done

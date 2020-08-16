@@ -1,0 +1,11 @@
+# Konfiurationsdatei für trap5
+# Name : aconfigfile
+# Hinweis : Um hier gemachte Änderungen umgehend zu 
+# aktivieren, müssen sie lediglich das die 
+# Konfigurationsdatei aconfigfile mittels
+# kill -HUP PID_of_trap5
+# neu einlesen.
+
+a=3
+b=6
+c=9

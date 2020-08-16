@@ -1,0 +1,24 @@
+# Demonstriert die Funktion trap zum Abfangen von Signalen
+# Name : trap8
+
+# Signal SIGINT ignorieren
+trap '' 2
+
+i=0
+while [ $i -lt 5 ]
+do
+   echo "Hier kein SIGINT möglich ..."
+   sleep 1
+   i=`expr $i + 1`
+done
+
+# Signal SIGINT wieder zurücksetzen
+trap 2
+
+i=0
+while [ $i -lt 5 ]
+do
+   echo "SIGINT wieder möglich ..."
+   sleep 1
+   i=`expr $i + 1`
+done

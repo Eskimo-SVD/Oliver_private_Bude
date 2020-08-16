@@ -1,0 +1,16 @@
+# Demonstriert einen einfachen Funktionsaufruf
+# Name : afunc1
+
+# Die Funktion hallo
+hallo() {
+   echo "In der Funktion hallo()"
+}
+
+# Hier beginnt das Hauptprogramm
+echo "Vor der Ausführung der Funktion ..."
+
+# Jetzt wird die Funktion aufgerufen
+hallo
+
+# Nach einem Funktionsaufruf
+echo "Weiter gehts im Hauptprogramm"

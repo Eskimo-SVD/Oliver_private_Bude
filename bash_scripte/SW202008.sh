@@ -4,6 +4,9 @@ sudo apt update
 sudo apt install thonny
 read -n 1 -s
 
+sudo apt install tmux
+read -n 1 -s
+
 sudo apt install python-picamera python3-picamera
 read -p "Press any key to continue... " -n1 -s
 
@@ -28,4 +31,7 @@ sudo apt install ghostscript
 sudo apt install wiringpi i2c-tools python-smbus bc curl build-essential libtool autoconf automake python-pip
 
 sudo apt full-upgrade
+
+# Network Address Translation = NAT
+# The Onion Router = TOR
 

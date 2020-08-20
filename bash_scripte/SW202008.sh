@@ -34,4 +34,7 @@ sudo apt full-upgrade
 
 # Network Address Translation = NAT
 # The Onion Router = TOR
+# Shell = Muschel, Schale
+
+
 

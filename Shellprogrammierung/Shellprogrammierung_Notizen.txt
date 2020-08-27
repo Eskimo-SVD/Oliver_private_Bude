@@ -1,0 +1,3 @@
+Shellprogrammierung_Notizen.txt
+
+echo "*** Hier wird $SHELL ausgeführt ***"

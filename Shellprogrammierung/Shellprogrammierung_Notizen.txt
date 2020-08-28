@@ -3,3 +3,7 @@ Shellprogrammierung_Notizen.txt
 echo "*** Hier wird $SHELL ausgeführt ***"
 
 find / -user pi -print >> find_pi.dat 2>> error_find_pi.dat
+
+echo "Heute ist $(date)"
+
+###

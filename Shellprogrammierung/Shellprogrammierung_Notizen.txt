@@ -8,3 +8,5 @@ echo "Heute ist $(date)"
 
 ###
 ###
+
+sudo find / -type f -print0 | xargs -0 grep -i raspkru02

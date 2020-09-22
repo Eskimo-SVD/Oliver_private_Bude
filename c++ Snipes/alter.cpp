@@ -1,5 +1,3 @@
-// Quellcode in c++ Alter
-
 #include <cstdlib>
 #include <iostream>
 
@@ -9,9 +7,9 @@ int main(int argc, char *atgv[])
 {
   int alter; //Variable vom Typ Integer
 
-  cout << "Wie alt bist Du?";
+  cout << "Wie alt bist Du?   ";
   cin >> alter;
   cout << "Du bist " << alter << " Jahre alt." << endl;
-  getc();
+//  getc();
   return 0;
 }

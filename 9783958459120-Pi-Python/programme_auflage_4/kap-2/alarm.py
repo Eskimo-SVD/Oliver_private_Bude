@@ -1,5 +1,5 @@
 #----------------------------------------------------
-# Dateiname:  alarm.py 
+# Dateiname:  alarm.py
 # Alarmanlage
 # Michael Weigend
 # Raspberry Pi programmieren mit Python, 3. Auflage, mitp 2016
@@ -25,5 +25,3 @@ while True:
             GPIO.output(16, False)                    #7
             GPIO.wait_for_edge(10, GPIO.FALLING)      #8
             GPIO.output(16, True)                     #9
-
-        

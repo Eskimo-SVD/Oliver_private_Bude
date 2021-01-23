@@ -1,0 +1,51 @@
+﻿<html >
+<meta http-equiv="Content-Type" content="charset=utf-8" />
+  <head>
+    <title>Raspberries</title>
+  </head>
+  <body>
+    <h1> Freies Obst</h1>
+    <p> Wo gibt es Fr&uuml;chte, die man kostenlos ernten darf?  
+    </p>
+    <h2>Eine neue Stelle eingeben</h2>
+    <form action="http://192.168.178.42/cgi-bin/newplace.py"
+     method="GET">
+     Welche Frucht?
+     <p>
+      <input type="Radio" name="fruit" value="Himbeeren"
+       checked="checked"/> &nbsp;Himbeeren<br/>
+      <input type="Radio" name="fruit" value="Brombeeren"/>
+          &nbsp;Brombeeren<br/>
+      <input type="Radio" name="fruit" value="Äpfel"/>
+         &nbsp;&Auml;pfel<br/>
+      <input type="Radio" name="fruit" value="Kastanien"/>
+         &nbsp;Kastanien
+      </p>
+      <p>
+       Beschreibung des Ortes (z.B. Witten, an der Ruhr Nähe Schleuse) <br/>
+       <input type="text" name="place" size=60>
+      </p>
+      <input type="Submit" value="Daten eingeben"/>
+    </form>
+    
+    <h2>Eine Fundstelle suchen</h2>
+    <form action="http://192.168.178.42/cgi-bin/searchplace.py"
+     method="GET">
+     Welche Frucht?
+     <p>
+      <input type="Radio" name="fruit" value="Himbeeren"
+       checked="checked"/> &nbsp;Himbeeren<br/>
+      <input type="Radio" name="fruit" value="Brombeeren"/>
+          &nbsp;Brombeeren<br/>
+      <input type="Radio" name="fruit" value="Äpfel"/>
+         &nbsp;&Auml;pfel<br/>
+      <input type="Radio" name="fruit" value="Kastanien"/>
+         &nbsp;Kastanien
+      </p>
+      
+      <input type="Submit" value="Suche"/>
+    </form>
+    
+
+</body>
+</html>

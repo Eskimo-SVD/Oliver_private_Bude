@@ -1,0 +1,22 @@
+{% extends 'main/basis.html' %}
+{% block titel %}News-&Uuml;bersicht{% endblock %}
+{% block inhalt %}
+    {% for m in meldungen %}
+        <div class="container">
+          <div class="titelzeile">
+            <div class="titel">{{ m.titel|escape }}</div>
+            <div class="zeitstempel">
+              {{ m.zeitstempel|date:'Y.m.d' }} um
+              {{ m.zeitstempel|time:'H:i' }} Uhr
+            </div>
+            <div style="clear: both"></div>
+          </div>
+          <div class="text">
+            {{ m.text|escape|linebreaksbr }}
+            <div class="link_unten">
+              <a href="{% url 'news:meldungen_detail' m.id %}">Details</a>
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+{% endblock %}

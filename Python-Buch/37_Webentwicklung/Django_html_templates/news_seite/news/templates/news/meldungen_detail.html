@@ -1,0 +1,58 @@
+{% extends 'main/basis.html' %}
+{% block titel %}
+  News-Details f&uuml;r Eintrag {{ meldung.id }}
+{% endblock %}
+{% block inhalt %}
+  <div class="container">
+    <div class="titelzeile">
+      <div class="titel">{{ meldung.titel|escape }}</div>
+      <div class="zeitstempel">{{ meldung.zeitstempel }}</div>
+      <div style="clear: both"></div>
+    </div>
+    <div class="text">
+      {{ meldung.text|escape|linebreaksbr }}
+    </div>
+  </div>
+  <div class="container">
+    <div class="titelzeile">Kommentare</div>
+    {% if meldung.kommentar_set.count %}
+      <table>
+      {% for k in meldung.kommentar_set.all %}
+        <tr class="kommentarzeile">
+          <td class="spaltenbezeichner">{{ k.autor }}:</td>
+          <td>{{ k.text|escape|linebreaksbr }}</td>
+        </tr>
+      {% endfor %}
+      </table>
+    {% else %}
+      Keine Kommentare
+    {% endif %}
+  </div>
+   
+  <div class="container">
+  <div class="titelzeile">Neuer Kommentar</div>
+  <span class="fehler">{{ fehler }}</span>
+  <form method="post" action="">
+    {% csrf_token %}
+    <input type="hidden" name="speichere_kommentar" value="1"/>
+    <table>
+      <tr class="kommentarzeile">
+        <td class="spaltenbezeichner">Ihr Name:</td>
+        <td><input type="text" name="besuchername" 
+                   value="{{ besuchername }}"/></td>
+        </tr>
+        <tr class="kommentarzeile">
+          <td class="spaltenbezeichner">Kommentar:</td>
+          <td>
+            <textarea name="kommentartext">{{ kommentartext }}</textarea>
+          </td>
+        </tr>
+      </table>
+      <input type="submit" value="Abschicken" />
+  </form>
+  </div>
+
+   <div class="link_unten">
+    <a href="{% url 'news:meldungen' %}">Zur&uuml;ck</a>
+   </div>
+{% endblock %}

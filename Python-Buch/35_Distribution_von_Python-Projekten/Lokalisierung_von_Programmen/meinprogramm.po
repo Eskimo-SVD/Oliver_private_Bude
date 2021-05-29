@@ -1,0 +1,25 @@
+# translation of messages.po to
+# Copyright (C) YEAR ORGANIZATION
+#
+# Peter Kaiser <p@penguin-p.de>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: messages\n"
+"POT-Creation-Date: 2007-08-27 15:11+CEST\n"
+"PO-Revision-Date: 2007-08-27 15:49+0200\n"
+"Last-Translator: Peter Kaiser <p@penguin-p.de>\n"
+"Language-Team:  <de@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: main.py:9
+msgid "Please enter a value: "
+msgstr "Bitte geben Sie einen Wert ein: "
+
+#: main.py:13
+msgid "The random choice is {}"
+msgstr "Die Zufallswahl ist: {}"
+

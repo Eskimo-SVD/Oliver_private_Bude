@@ -1,0 +1,31 @@
+---
+ansible_python_interpreter: '{{ ansible_playbook_python }}'
+
+# AWS Settings.
+aws_environment: true
+aws_region: us-east-1
+aws_profile: default
+
+# This variable will be populated during playbook runs.
+stack_outputs: {}
+
+# EKS Cluster settings.
+eks_cluster_name: eks-example
+# See: https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html
+eks_kubernetes_version: "1.17"
+
+# Nodegroup settings.
+eks_nodegroup_name: eks-example-nodegroup
+eks_nodegroup_instance_type: t3.medium
+eks_nodegroup_cluster_size: 3
+
+# WordPress settings.
+wordpress_mysql_password: ebJYfAi2QjhPsR
+
+# Domain settings for Route53 DNS.
+wordpress_route53_zone: '' # e.g. 'example.com'
+wordpress_route53_domain: '' # e.g. 'wordpress.example.com'
+
+# Kubernetes settings.
+k8s_kubeconfig: ~/.kube/eks-example
+k8s_no_log: true
